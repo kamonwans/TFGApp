@@ -1,0 +1,150 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#B9F6CA"
+    android:id="@+id/contentContainerLearning"
+    tools:context=".fragment.FriendsOnlineFragment">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<FrameLayout-->
+                <!--android:id="@+id/contentContainerLearning"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+        <!--</LinearLayout>-->
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_pink"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="26sp"
+            android:text="สื่อการเรียนรู้"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/cartoon" />
+
+                <TextView
+                    android:id="@+id/tvLearningWrong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#1A237E"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:src="@drawable/icon_vs" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/cartoon1" />
+
+                <TextView
+                    android:id="@+id/tvLearningRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#1A237E"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_bnt_6"
+                android:gravity="center"
+                android:text="คำที่เขียนผิด" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_bnt_3"
+                android:gravity="center"
+                android:text="คำที่เขียนถูก" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <ImageView
+                android:src="@drawable/icon_back"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnTrickLeaning"
+                android:background="@drawable/bg_bnt_grey"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="เทคนิค" />
+            <ImageView
+                android:id="@+id/imgArrowNext"
+                android:src="@drawable/icon_next"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

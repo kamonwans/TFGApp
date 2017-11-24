@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.LearningMainFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:elevation="5dp"
+                android:padding="6dp"
+                android:src="@drawable/user2"
+                app:civ_border_color="#f8c866"
+                app:civ_border_width="3dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="คะแนน" />
+
+                <TextView
+                    android:id="@+id/tvScoreOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="00" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/timer" />
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="0"
+                android:textSize="30sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="คะแนน" />
+
+                <TextView
+                    android:id="@+id/tvScoreTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="00" />
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:elevation="5dp"
+                android:padding="6dp"
+                android:src="@drawable/user3"
+                app:civ_border_color="#64d4f9"
+                app:civ_border_width="3dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:background="#f8c866" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:background="#64d4f9" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearGame2"
+        android:gravity="center"
+        android:background="#fde8d6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="แ"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="อ"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2_blank"
+                android:text=""
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2_blank"
+                android:text=""
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="เ"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="ค"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2_blank"
+                android:text=""
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="น"
+                android:textSize="32sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="พ"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="บ"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="ชั"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="พ"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_game2"
+                android:gravity="center"
+                android:text="ป"
+                android:textSize="32sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
