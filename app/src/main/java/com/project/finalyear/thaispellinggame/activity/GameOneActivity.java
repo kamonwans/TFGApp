@@ -163,13 +163,13 @@ public class GameOneActivity extends AppCompatActivity {
     private void Click() {
         advance();
         answerIsRight();
-        if (this.answerIsRight()) {
-            Toast.makeText(getApplicationContext(), "Right", Toast.LENGTH_SHORT).show();
-            advance();
-        } else {
-            Toast.makeText(getApplicationContext(), "Wrong", Toast.LENGTH_SHORT).show();
-            advance();
-        }
+//        if (this.answerIsRight()) {
+//            Toast.makeText(getApplicationContext(), "Right", Toast.LENGTH_SHORT).show();
+//            advance();
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Wrong", Toast.LENGTH_SHORT).show();
+//            advance();
+//        }
         selectedWords = btnChoiceOne.getText().toString();
         selectedWords = btnChoiceTwo.getText().toString();
         selectedWords = btnChoiceThree.getText().toString();

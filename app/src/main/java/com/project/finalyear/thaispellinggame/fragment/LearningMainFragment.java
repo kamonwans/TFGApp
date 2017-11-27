@@ -44,20 +44,33 @@ public class LearningMainFragment extends Fragment{
         btnLearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentLearningMain();
+                FragmentLearningMainSection();
             }
         });
     }
 
-    public void FragmentLearningMain() {
-        Fragment fragment = new FrequentlyLearningFragment();
+//    public void FragmentLearningMain() {
+//        Fragment fragment = new FrequentlyLearningFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.content_main, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
+
+//    public void FragmentSectionMaekok() {
+//        Fragment fragment = new LearningSectionMaekokFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.content_main, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
+    public void FragmentLearningMainSection() {
+        Fragment fragment = new LearningMainSectionFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_main, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
-
 
 
 }

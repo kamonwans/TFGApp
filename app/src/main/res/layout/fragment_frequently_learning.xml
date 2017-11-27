@@ -4,7 +4,7 @@
     android:id="@+id/contentContainerLearning"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B0BEC5"
+    android:background="#FFE4E1"
     android:orientation="vertical"
     tools:context=".fragment.FriendsOnlineFragment">
 
@@ -166,6 +166,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/imgBack"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -178,10 +179,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_bnt_grey"
                 android:padding="20dp"
-                android:text="เทคนิค" />
+                android:text="เทคนิคการจำ" />
 
             <ImageView
-                android:id="@+id/imgArrowNext"
+                android:id="@+id/imgNext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

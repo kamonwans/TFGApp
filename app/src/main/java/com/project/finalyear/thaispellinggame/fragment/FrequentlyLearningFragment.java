@@ -5,12 +5,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -28,7 +30,8 @@ public class FrequentlyLearningFragment extends Fragment {
     private Firebase firebase;
     Button btnTrickLeaning, btnOkTrick;
     Context context;
-
+    ImageView imgBack;
+    ImageView imgNext;
 
     public FrequentlyLearningFragment() {
         // Required empty public constructor
@@ -62,7 +65,7 @@ public class FrequentlyLearningFragment extends Fragment {
     public void initInstance(View view) {
         tvLearningWrong = (TextView) view.findViewById(R.id.tvLearningWrong);
         tvLearningRight = (TextView) view.findViewById(R.id.tvLearningRight);
-        firebase = new Firebase("https://thaispellinggame-28cfe.firebaseio.com/Learning/1");
+        firebase = new Firebase("https://thaispellinggame-28cfe.firebaseio.com/Learning/0");
         firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -100,8 +103,21 @@ public class FrequentlyLearningFragment extends Fragment {
                 dialog.show();
             }
         });
+        imgBack = (ImageView) view.findViewById(R.id.imgBack);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentLearningMainSection();
+            }
+        });
     }
-
+    public void FragmentLearningMainSection() {
+        Fragment fragment = new LearningMainSectionFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
