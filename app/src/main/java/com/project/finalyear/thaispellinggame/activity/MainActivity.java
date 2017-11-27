@@ -1,5 +1,6 @@
 package com.project.finalyear.thaispellinggame.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,19 +14,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.adapter.ViewPagerAdapter;
+import com.project.finalyear.thaispellinggame.fragment.ContactAppFragment;
+import com.project.finalyear.thaispellinggame.fragment.ContactUsFragment;
+import com.project.finalyear.thaispellinggame.fragment.GameOneFragment;
 import com.project.finalyear.thaispellinggame.fragment.LearningMainFragment;
+import com.project.finalyear.thaispellinggame.fragment.SummaryRoundOneFragment;
 import com.project.finalyear.thaispellinggame.fragment.TestFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
+    private Button btnContactUs, btnContactApp;
 
 
     @Override
@@ -58,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         // Check if user is signed in and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (currentUser == null){
+        if (currentUser == null) {
 
 //            sendToStart();
         }
@@ -94,11 +101,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
 
-        if (id == R.id.nav_home){
+        if (id == R.id.nav_home) {
 
             setFragment(new ViewPagerAdapter());
 
-        }else if (id == R.id.nav_learn) {
+        } else if (id == R.id.nav_learn) {
 
             setFragment(new LearningMainFragment());
 
@@ -112,8 +119,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_contact) {
+            dialogContact();
 
-        }else if (id == R.id.nav_sign_out){
+
+        } else if (id == R.id.nav_sign_out) {
 
             FirebaseAuth.getInstance().signOut();
 //            sendToStart();
@@ -124,13 +133,56 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void setFragment(Fragment fragment){
-        if(fragment!=null){
+    private void dialogContact() {
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_popup_contact);
+
+        btnContactUs = (Button) dialog.findViewById(R.id.btnContactUs);
+        btnContactApp = (Button) dialog.findViewById(R.id.btnContactApp);
+
+        btnContactApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new ContactAppFragment());
+                dialog.cancel();
+
+            }
+        });
+        btnContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new ContactUsFragment());
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+    }
+
+    public void setFragment(Fragment fragment) {
+        if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_main,fragment);
+            ft.replace(R.id.content_main, fragment);
             ft.commit();
         }
     }
 
+
+//    public void FragmentSummaryRoundOne() {
+//        Fragment fragment = new SummaryRoundOneFragment();
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.contentContainerRoundOne, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
+//    public void FragmentGameOne() {
+//        Fragment fragment = new GameOneFragment();
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.content_main, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 
 }

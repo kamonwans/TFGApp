@@ -5,7 +5,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="contact_app">\t\tแอปพลิคชันนี้เป็นแอปพลิเคชันเกมคำศัพท์ไทยที่มักเขียนผิด จัดทำขึ้นเพื่อกระตุ้นให้ผู้เล่นมีปฏิสัมพันธ์กับผู้อื่นและช่วยลดปัญหาการเรียนคำศัพท์ภาษาไทยที่มักเขียนผิดให้ลดน้อยลง</string>
 
+    <string name="contact_us_dept">ภาควิชาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยขอนแก่น</string>
+    <string name="contact_us_pro">อาจารย์ที่ปรึกษาโครงงาน</string>
+    <string name="contact_us_id_user1">573020355-4 Cs</string>
+    <string name="contact_us_id_user2">573020399-4 Cs</string>
+    <string name="contact_us_name_teacher">อาจารย์ชิตสุธา สุ่มเล็ก</string>
+    <string name="contact_us_name_user1">นางสาวกมลวรรณ สิงสวนมอญ</string>
+    <string name="contact_us_name_user2">นางสาวอภิญญา จ่ากลาง</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

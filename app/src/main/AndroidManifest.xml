@@ -15,9 +15,10 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
         <activity android:name=".activity.GameOneActivity" />
@@ -25,7 +26,8 @@
         <activity android:name=".activity.GameThreeActivity" />
         <activity android:name=".activity.GameFourActivity" />
         <activity android:name=".activity.GameFiveActivity" />
-
+        <activity android:name=".activity.GameActivity" />
+        <activity android:name=".activity.SummaryRoundOneActivity"></activity>
     </application>
 
 </manifest>

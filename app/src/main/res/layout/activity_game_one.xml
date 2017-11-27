@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragment.LearningMainFragment">
+    <include layout="@layout/content_game_one" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,8 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <include layout="@layout/content_game_one" />
+
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -28,8 +34,9 @@
                     android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="100dp"
+                        android:layout_width="0dp"
                         android:layout_height="100dp"
+                        android:layout_weight="1"
                         android:elevation="5dp"
                         android:padding="6dp"
                         android:src="@drawable/user2"
@@ -43,23 +50,23 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="คะแนน" />
 
                         <TextView
                             android:id="@+id/tvScoreOne"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:gravity="center"
                             android:text="00" />
 
                     </LinearLayout>
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="85dp"
+                    android:layout_height="80dp"
                     android:orientation="vertical"
                     android:padding="10dp">
 
@@ -91,21 +98,22 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="คะแนน" />
 
                         <TextView
                             android:id="@+id/tvScoreTwo"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:gravity="center"
                             android:text="00" />
                     </LinearLayout>
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="100dp"
+                        android:layout_width="0dp"
                         android:layout_height="100dp"
+                        android:layout_weight="1"
                         android:elevation="5dp"
                         android:padding="6dp"
                         android:src="@drawable/user3"
@@ -200,6 +208,7 @@
                         android:background="@drawable/bg_bnt_3"
                         android:text=""
                         android:textSize="20sp" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -207,3 +216,4 @@
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+</FrameLayout>

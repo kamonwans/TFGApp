@@ -1,16 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.project.finalyear.thaispellinggame.fragment.SummaryRoundOneFragment">
-
+    android:padding="20dp"
+    tools:context="com.project.finalyear.thaispellinggame.activity.SummaryRoundOneActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
 
         <TextView
             android:layout_width="match_parent"
@@ -35,8 +35,9 @@
                 app:civ_border_width="3dp" />
 
             <ImageView
+                android:layout_gravity="center"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:src="@drawable/icon_vs" />
 
@@ -46,7 +47,7 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="6dp"
-                android:src="@drawable/user2"
+                android:src="@drawable/user3"
                 app:civ_border_color="#64d4f9"
                 app:civ_border_width="3dp" />
         </LinearLayout>
@@ -56,32 +57,44 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="คำที่ถูกต้อง"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
         <LinearLayout
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="10dp">
 
-            <View
-                android:background="#000000"
-                android:layout_width="1dp"
-                android:layout_height="match_parent" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvCorrectAnswerUser1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp">
+
+            </android.support.v7.widget.RecyclerView>
 
             <android.support.v7.widget.RecyclerView
-                android:padding="5dp"
-
-                android:layout_width="wrap_content"
+                android:id="@+id/recyclerViewRoundOne"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
-            <View
-                android:background="#000000"
-                android:layout_width="1dp"
-                android:layout_height="match_parent" />
+                android:padding="5dp">
+
+            </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvCorrectAnswerUser2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp">
+
+            </android.support.v7.widget.RecyclerView>
+
         </LinearLayout>
 
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

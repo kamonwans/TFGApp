@@ -3,6 +3,7 @@ package com.project.finalyear.thaispellinggame.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,10 +27,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.fragment.GameOneFragment;
 import com.project.finalyear.thaispellinggame.fragment.LearningMainFragment;
 import com.project.finalyear.thaispellinggame.fragment.SummaryRoundOneFragment;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -38,17 +45,19 @@ import java.util.Random;
 public class GameOneActivity extends AppCompatActivity {
 
     CountDownTimer countDownTimer;
-    TextView tvTimer, tvMeaning;
-    Button btnChoiceOne, btnChoiceTwo, btnChoiceThree;
+    private static TextView tvTimer, tvMeaning;
+    private static Button btnChoiceOne, btnChoiceTwo, btnChoiceThree;
     LinearLayout linearGameOne;
     private Firebase firebase;
     DatabaseReference databaseReference;
     private List<String> list = new ArrayList<String>();
     private ArrayAdapter<String> arrayAdapter;
-    private String wordMeaning, wordBtnOne, wordBtnTwo, wordBtnThree;
     private static final String URL_Firebase = "https://thaispellinggame-28cfe.firebaseio.com/Game_one";
     private int currentGameOneIndex;
     private ArrayList<GameOne> gameOneArrayList;
+    private String selectedWords;
+    public TextView answer;
+    ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
 
 
     @Override
@@ -60,6 +69,7 @@ public class GameOneActivity extends AppCompatActivity {
     }
 
     private void initInstance() {
+        tvTimer = (TextView) findViewById(R.id.tvTimer);
         btnChoiceOne = (Button) findViewById(R.id.btnChoiceOne);
         btnChoiceTwo = (Button) findViewById(R.id.btnChoiceTwo);
         btnChoiceThree = (Button) findViewById(R.id.btnChoiceThree);
@@ -73,7 +83,7 @@ public class GameOneActivity extends AppCompatActivity {
     }
 
     private void CountDownTimer() {
-        tvTimer = (TextView) findViewById(R.id.tvTimer);
+
         countDownTimer = new CountDownTimer(20000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -84,7 +94,11 @@ public class GameOneActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 tvTimer.setText("0");
-                FragmentSummaryRoundOne();
+//                checkAnswer();
+                Intent intent = new Intent(GameOneActivity.this, SummaryRoundOneActivity.class);
+//                intent.putExtra("arrayList", arrayList );
+                startActivity(intent);
+
 
             }
         }.start();
@@ -112,6 +126,7 @@ public class GameOneActivity extends AppCompatActivity {
 //                btnChoiceThree.setText(btnThree);
                 gameOneArrayList = new ArrayList<GameOne>();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
+
                     gameOneArrayList.add(data.getValue(GameOne.class));
                 }
                 currentGameOneIndex = 0;
@@ -148,13 +163,24 @@ public class GameOneActivity extends AppCompatActivity {
     private void Click() {
         advance();
         answerIsRight();
+        if (this.answerIsRight()) {
+            Toast.makeText(getApplicationContext(), "Right", Toast.LENGTH_SHORT).show();
+            advance();
+        } else {
+            Toast.makeText(getApplicationContext(), "Wrong", Toast.LENGTH_SHORT).show();
+            advance();
+        }
+        selectedWords = btnChoiceOne.getText().toString();
+        selectedWords = btnChoiceTwo.getText().toString();
+        selectedWords = btnChoiceThree.getText().toString();
+
     }
 
     private boolean answerIsRight() {
-        String answer = "";
-        if (btnChoiceOne == btnChoiceOne) answer = "a";
-        if (btnChoiceTwo == btnChoiceTwo) answer = "b";
-        if (btnChoiceThree == btnChoiceThree) answer = "b";
+        String answer = "correctAnswer";
+        if (btnChoiceOne == btnChoiceOne) answer = "b";
+        if (btnChoiceTwo == btnChoiceTwo) answer = "correctAnswer";
+        if (btnChoiceThree == btnChoiceThree) answer = "correctAnswer";
         return gameOneArrayList.get(currentGameOneIndex).isCorrectAnswer(answer);
     }
 
@@ -170,22 +196,22 @@ public class GameOneActivity extends AppCompatActivity {
         currentGameOneIndex = (currentGameOneIndex + 1) % gameOneArrayList.size();
         displayGameOne(currentGameOneIndex);
     }
-//    public void setFragment(Fragment fragment){
-//        if(fragment!=null){
-//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//            transaction.replace(R.id.contentContainerRoundOne,fragment);
-//            transaction.commit();
-//        }
+
+//    public void sendData(String data) {
+//        btnChoiceOne.getText().toString();
+//        btnChoiceTwo.getText().toString();
+//        btnChoiceThree.getText().toString();
+//        Log.d("one","one");
+//        Log.d("two","two");
+//        Log.d("three","three");
 //    }
-
-    public void FragmentSummaryRoundOne() {
-        Fragment fragment = new SummaryRoundOneFragment();
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.contentContainerRoundOne, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
+//    public void checkAnswer() {
+//        HashMap<String, String> map;
+//        map = new HashMap<String, String>();
+//        map.put("primary key", "choice");
+//        arrayList.add(map);
+//        Log.d("map", "map");
+//
+//    }
 
 }
