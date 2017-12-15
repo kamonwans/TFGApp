@@ -16,6 +16,7 @@ import com.project.finalyear.thaispellinggame.activity.GameOneActivity;
 
 public class LearningMainFragment extends Fragment{
     Button btnLearning;
+    Button btnThreeLetterLearning;
 
 
     public LearningMainFragment() {
@@ -47,6 +48,13 @@ public class LearningMainFragment extends Fragment{
                 FragmentLearningMainSection();
             }
         });
+        btnThreeLetterLearning = (Button) view.findViewById(R.id.btnThreeLetterLearning);
+        btnThreeLetterLearning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentThreeLetter();
+            }
+        });
     }
 
 //    public void FragmentLearningMain() {
@@ -71,6 +79,12 @@ public class LearningMainFragment extends Fragment{
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
+    public void FragmentThreeLetter() {
+        Fragment fragment = new ThreeLettersFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
 }

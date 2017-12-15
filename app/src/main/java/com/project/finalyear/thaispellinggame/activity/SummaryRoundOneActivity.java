@@ -6,11 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,10 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.adapter.RoundOneAdapter;
 import com.project.finalyear.thaispellinggame.model.*;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 public class SummaryRoundOneActivity extends AppCompatActivity {

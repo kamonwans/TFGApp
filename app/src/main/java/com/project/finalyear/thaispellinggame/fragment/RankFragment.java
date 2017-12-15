@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.firebase.client.Firebase;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.adapter.RankAdapter;
 import com.project.finalyear.thaispellinggame.model.RankModel;
-import com.project.finalyear.thaispellinggame.model.RoundOneModel;
+
 
 import java.util.ArrayList;
 import java.util.List;

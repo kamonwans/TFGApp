@@ -178,7 +178,7 @@ public class GameOneActivity extends AppCompatActivity {
 
     private boolean answerIsRight() {
         String answer = "correctAnswer";
-        if (btnChoiceOne == btnChoiceOne) answer = "b";
+        if (btnChoiceOne == btnChoiceOne) answer = "correctAnswer";
         if (btnChoiceTwo == btnChoiceTwo) answer = "correctAnswer";
         if (btnChoiceThree == btnChoiceThree) answer = "correctAnswer";
         return gameOneArrayList.get(currentGameOneIndex).isCorrectAnswer(answer);

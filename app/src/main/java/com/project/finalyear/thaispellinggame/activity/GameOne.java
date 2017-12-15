@@ -1,8 +1,6 @@
 package com.project.finalyear.thaispellinggame.activity;
 
-/**
- * Created by kamonwan on 11/21/2017.
- */
+
 
 public class GameOne {
     private String ChoiceA;
@@ -50,8 +48,6 @@ public class GameOne {
     public void setMeaning(String meaning) {
         this.meaning = meaning;
     }
-
-
 
     public boolean isCreditAlreadyGiven() {
         return creditAlreadyGiven;

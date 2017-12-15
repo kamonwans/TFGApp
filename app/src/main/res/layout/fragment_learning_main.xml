@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:background="#4FC3F7"
             android:gravity="center"
-            android:text="บทเรียน"
+            android:text="บทเรียนมาตราตัวสะกด"
             android:textSize="26dp"></Button>
     </LinearLayout>
 
@@ -31,13 +31,13 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/btnGameLearning"
+            android:id="@+id/btnThreeLetterLearning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FFF176"
             android:gravity="center"
-            android:text="เกมสื่อการเรียนรู้"
+            android:text="บทเรียนอักษรสามหมู่"
             android:textSize="26dp"></Button>
     </LinearLayout>
 
