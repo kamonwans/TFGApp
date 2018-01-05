@@ -1,6 +1,7 @@
 package com.project.finalyear.thaispellinggame.fragment;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import com.project.finalyear.thaispellinggame.R;
 public class LearningSectionMaegewFragment extends Fragment {
     ImageView imgBack;
     ImageView imgNext;
+    MediaPlayer mediaPlayer;
 
 
     public LearningSectionMaegewFragment() {
@@ -34,6 +36,7 @@ public class LearningSectionMaegewFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_section_maegew, container, false);
         initInstance(view);
+        PlaySound();
         return view;
     }
     private void initInstance(View view) {
@@ -68,6 +71,31 @@ public class LearningSectionMaegewFragment extends Fragment {
         transaction.commit();
     }
 
+    public void PlaySound() {
+       mediaPlayer = MediaPlayer.create(getActivity(),R.raw.maequew);
+        mediaPlayer.start();
+    }
+    // ทำงานเมื่อเปิด app เข้ามา
+    public void onResume() {
+        super.onResume();
+        mediaPlayer.start();
+    }
+
+    // ทำงานเมื่อแอปหยุดทำงานชั่วคราว
+    public void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
+        mediaPlayer.release();
+
+    }
+
+    // ทำงานเมื่อแอปถูปิดลง
+    public void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        mediaPlayer = null;
+    }
 }
 
 
