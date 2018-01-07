@@ -41,7 +41,7 @@ public class LearningSectionMaekodFragment extends Fragment {
         imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentLearningMain();
+//                FragmentLearningMain();
             }
         });
         imgBack = (ImageView) view.findViewById(R.id.imgBack);

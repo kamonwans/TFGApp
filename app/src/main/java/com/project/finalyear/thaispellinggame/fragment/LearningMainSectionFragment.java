@@ -71,7 +71,7 @@ ImageView btnMaekok;
         btnMaeguew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            view.startAnimation(animation);
+//            view.startAnimation(animation);
                 FragmentLearningMaeGuew();
             }
         });

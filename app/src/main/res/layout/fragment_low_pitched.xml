@@ -37,7 +37,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_kho_khway"
+                    android:id="@+id/voiceKhoKhway"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -47,7 +47,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_kho_kon"
+                    android:id="@+id/voiceKhoKon"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -57,7 +57,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_kho_rakung"
+                    android:id="@+id/voiceKhoRakung"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -75,7 +75,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_ngo_ngu"
+                    android:id="@+id/voiceNgoNgu"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -85,7 +85,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_cho_chang"
+                    android:id="@+id/voiceChoChang"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -95,7 +95,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_cho_cho"
+                    android:id="@+id/voiceChoCho"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -113,7 +113,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_cho_cher"
+                    android:id="@+id/voiceChoCher"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -123,7 +123,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_yo_ying"
+                    android:id="@+id/voiceYoYing"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -133,7 +133,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_to_monto"
+                    android:id="@+id/voiceToMonto"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -150,7 +150,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_to_putao"
+                    android:id="@+id/voiceToPutao"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -160,7 +160,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_no_naen"
+                    android:id="@+id/voiceNoNaen"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -169,7 +169,7 @@
                     android:text="ณ.เณร"
                     android:textSize="20sp" />
                 <TextView
-                    android:id="@+id/voice_to_tahan"
+                    android:id="@+id/voiceToTahan"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"

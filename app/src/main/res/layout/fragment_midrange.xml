@@ -38,7 +38,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_ko_kai"
+                    android:id="@+id/voiceKoKai"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -48,7 +48,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_jo_jan"
+                    android:id="@+id/voiceJoJan"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -58,7 +58,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_do_chada"
+                    android:id="@+id/voiceDoChada"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -76,7 +76,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_to_patuk"
+                    android:id="@+id/voiceToPatuk"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -86,7 +86,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_do_dek"
+                    android:id="@+id/voiceDoDek"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -96,7 +96,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_to_tao"
+                    android:id="@+id/voiceToTao"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -114,7 +114,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/voice_bo_baimai"
+                    android:id="@+id/voiceBoBaimai"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -124,7 +124,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_po_pla"
+                    android:id="@+id/voicePoPla"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -134,7 +134,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/voice_ao_arng"
+                    android:id="@+id/voiceAoArng"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_weight="1"

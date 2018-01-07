@@ -9,28 +9,31 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.common.Util;
 
 public class LowPitchedFragment extends Fragment {
 
     ImageView imgNext;
     ImageView imgBack;
-    TextView voice_kho_khway;
-    TextView voice_kho_kon;
-    TextView voice_kho_rakung;
-    TextView voice_ngo_ngu;
-    TextView voice_cho_chang;
-    TextView voice_cho_cho;
-    TextView voice_cho_cher;
-    TextView voice_yo_ying;
-    TextView voice_to_monto;
-    TextView voice_to_putao;
-    TextView voice_no_naen;
-    TextView voice_to_tahan;
-    MediaPlayer voice_low_pitched;
+    TextView voiceKhoKhway;
+    TextView voiceKhoKon;
+    TextView voiceKhoRakung;
+    TextView voiceNgoNgu;
+    TextView voiceChoChang;
+    TextView voiceChoCho;
+    TextView voiceChoCher;
+    TextView voiceYoYing;
+    TextView voiceToMonto;
+    TextView voiceToPutao;
+    TextView voiceNoNaen;
+    TextView voiceToTahan;
+    MediaPlayer voiceLowPitched;
 
     public LowPitchedFragment() {
         // Required empty public constructor
@@ -59,6 +62,7 @@ public class LowPitchedFragment extends Fragment {
     }
 
     private void initInstances(View view) {
+        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
         imgNext = (ImageView) view.findViewById(R.id.imgNext);
         imgBack = (ImageView) view.findViewById(R.id.imgBack);
         imgNext.setOnClickListener(new View.OnClickListener() {
@@ -74,100 +78,112 @@ public class LowPitchedFragment extends Fragment {
             }
         });
 
-        voice_kho_khway = (TextView) view.findViewById(R.id.voice_kho_khway);
-        voice_kho_khway.setOnClickListener(new View.OnClickListener() {
+        voiceKhoKhway = (TextView) view.findViewById(R.id.voiceKhoKhway);
+        voiceKhoKhway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.kho__khway);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.kho__khway);
+                voiceLowPitched.start();
             }
         });
-        voice_kho_kon = (TextView) view.findViewById(R.id.voice_kho_kon);
-        voice_kho_kon.setOnClickListener(new View.OnClickListener() {
+        voiceKhoKon = (TextView) view.findViewById(R.id.voiceKhoKon);
+        voiceKhoKon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.kho_kon);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.kho_kon);
+                voiceLowPitched.start();
             }
         });
-        voice_kho_rakung = (TextView) view.findViewById(R.id.voice_kho_rakung);
-        voice_kho_rakung.setOnClickListener(new View.OnClickListener() {
+        voiceKhoRakung = (TextView) view.findViewById(R.id.voiceKhoRakung);
+        voiceKhoRakung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.kho_rakung);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.kho_rakung);
+                voiceLowPitched.start();
             }
         });
-        voice_ngo_ngu = (TextView) view.findViewById(R.id.voice_ngo_ngu);
-        voice_ngo_ngu.setOnClickListener(new View.OnClickListener() {
+        voiceNgoNgu = (TextView) view.findViewById(R.id.voiceNgoNgu);
+        voiceNgoNgu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.ngo_ngu);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.ngo_ngu);
+                voiceLowPitched.start();
             }
         });
-        voice_cho_chang = (TextView) view.findViewById(R.id.voice_cho_chang);
-        voice_cho_chang.setOnClickListener(new View.OnClickListener() {
+        voiceChoChang = (TextView) view.findViewById(R.id.voiceChoChang);
+        voiceChoChang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.cho_chang);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.cho_chang);
+                voiceLowPitched.start();
             }
         });
-        voice_cho_cho = (TextView) view.findViewById(R.id.voice_cho_cho);
-        voice_cho_cho.setOnClickListener(new View.OnClickListener() {
+        voiceChoCho = (TextView) view.findViewById(R.id.voiceChoCho);
+        voiceChoCho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.cho_cho);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.cho_cho);
+                voiceLowPitched.start();
             }
         });
-        voice_cho_cher = (TextView) view.findViewById(R.id.voice_cho_cher);
-        voice_cho_cher.setOnClickListener(new View.OnClickListener() {
+        voiceChoCher = (TextView) view.findViewById(R.id.voiceChoCher);
+        voiceChoCher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.cho_cher);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.cho_cher);
+                voiceLowPitched.start();
             }
         });
-        voice_yo_ying = (TextView) view.findViewById(R.id.voice_yo_ying);
-        voice_yo_ying.setOnClickListener(new View.OnClickListener() {
+        voiceYoYing = (TextView) view.findViewById(R.id.voiceYoYing);
+        voiceYoYing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.yo_ying);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.yo_ying);
+                voiceLowPitched.start();
             }
         });
-        voice_to_monto = (TextView) view.findViewById(R.id.voice_to_monto);
-        voice_to_monto.setOnClickListener(new View.OnClickListener() {
+        voiceToMonto = (TextView) view.findViewById(R.id.voiceToMonto);
+        voiceToMonto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.to_monto);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.to_monto);
+                voiceLowPitched.start();
             }
         });
-        voice_to_putao = (TextView) view.findViewById(R.id.voice_to_putao);
-        voice_to_putao.setOnClickListener(new View.OnClickListener() {
+        voiceToPutao = (TextView) view.findViewById(R.id.voiceToPutao);
+        voiceToPutao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.to_putao);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.to_putao);
+                voiceLowPitched.start();
             }
         });
-        voice_no_naen = (TextView) view.findViewById(R.id.voice_no_naen);
-        voice_no_naen.setOnClickListener(new View.OnClickListener() {
+        voiceNoNaen = (TextView) view.findViewById(R.id.voiceNoNaen);
+        voiceNoNaen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.no_naen);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.no_naen);
+                voiceLowPitched.start();
             }
         });
-        voice_to_tahan = (TextView) view.findViewById(R.id.voice_to_tahan);
-        voice_to_tahan.setOnClickListener(new View.OnClickListener() {
+        voiceToTahan = (TextView) view.findViewById(R.id.voiceToTahan);
+        voiceToTahan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_low_pitched = MediaPlayer.create(getActivity(), R.raw.to_tahan);
-                voice_low_pitched.start();
+                view.startAnimation(animation);
+                voiceLowPitched = Util.playMediaSound(getActivity(), R.raw.to_tahan);
+                voiceLowPitched.start();
             }
         });
     }
@@ -189,7 +205,20 @@ public class LowPitchedFragment extends Fragment {
 
     }
 
+    public void onPause() {
+        super.onPause();
+        voiceLowPitched.pause();
+        voiceLowPitched.release();
 
+    }
+
+    // ทำงานเมื่อแอปถูปิดลง
+    public void onDestroy() {
+        super.onDestroy();
+        voiceLowPitched.stop();
+        voiceLowPitched.release();
+        voiceLowPitched = null;
+    }
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
@@ -201,6 +230,7 @@ public class LowPitchedFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
     private void FragmentMidrange() {
         Fragment fragment = new MidrangeFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

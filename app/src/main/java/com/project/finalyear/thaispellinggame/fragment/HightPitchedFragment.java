@@ -9,38 +9,39 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.common.Util;
 
 public class HightPitchedFragment extends Fragment {
     ImageView imgNext;
     ImageView imgBack;
-    TextView voice_kho_khai;
-    TextView voice_kho_khod;
-    TextView voice_cho_ching;
-    TextView voice_to_tan;
-    TextView voice_to_tung;
-    TextView voice_po_pueng;
-    TextView voice_fo_fha;
-    TextView voice_so_sara;
-    TextView voice_so_ruesee;
-    TextView voice_so_sue;
-    TextView voice_ho_heeb;
-    MediaPlayer voice_hight_pitched;
+    TextView voiceKhoKhai;
+    TextView voiceKhoKhod;
+    TextView voiceChoChing;
+    TextView voiceToTan;
+    TextView voiceToTung;
+    TextView voicePoPueng;
+    TextView voiceFoFha;
+    TextView voiceSoSara;
+    TextView voiceSoRuesee;
+    TextView voiceSoSue;
+    TextView voiceHoHeeb;
+    MediaPlayer voiceHightPitched;
 
     public HightPitchedFragment() {
         // Required empty public constructor
     }
 
- 
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       
+
     }
 
     @Override
@@ -53,8 +54,8 @@ public class HightPitchedFragment extends Fragment {
     }
 
 
-
     private void initInstances(View view) {
+        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
         imgBack = (ImageView) view.findViewById(R.id.imgBack);
         imgNext = (ImageView) view.findViewById(R.id.imgNext);
         imgNext.setOnClickListener(new View.OnClickListener() {
@@ -69,102 +70,111 @@ public class HightPitchedFragment extends Fragment {
                 FragmentThreeLetter();
             }
         });
-        voice_kho_khai = (TextView) view.findViewById(R.id.voice_kho_khai);
-        voice_kho_khai.setOnClickListener(new View.OnClickListener() {
+        voiceKhoKhai = (TextView) view.findViewById(R.id.voiceKhoKhai);
+        voiceKhoKhai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.kho_khai);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+                voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.kho_khai);
+                voiceHightPitched.start();
+            }
+        });
+
+        voiceKhoKhod = (TextView) view.findViewById(R.id.voiceKhoKhod);
+        voiceKhoKhod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(animation);
+                voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.kho_khod);
+                voiceHightPitched.start();
+            }
+        });
+        voiceChoChing = (TextView) view.findViewById(R.id.voiceChoChing);
+        voiceChoChing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(animation);
+                voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.cho_ching);
+                voiceHightPitched.start();
+            }
+        });
+        voiceToTan = (TextView) view.findViewById(R.id.voiceToTan);
+        voiceToTan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.startAnimation(animation);
+                voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.to_tan);
+                voiceHightPitched.start();
 
             }
         });
-        voice_kho_khod = (TextView) view.findViewById(R.id.voice_kho_khod);
-        voice_kho_khod.setOnClickListener(new View.OnClickListener() {
+        voiceToTung = (TextView) view.findViewById(R.id.voiceToTung);
+        voiceToTung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.kho_khod);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched =  Util.playMediaSound(getActivity(), R.raw.to_tung);
+                voiceHightPitched.start();
 
             }
         });
-        voice_cho_ching = (TextView) view.findViewById(R.id.voice_cho_ching);
-        voice_cho_ching.setOnClickListener(new View.OnClickListener() {
+        voicePoPueng = (TextView) view.findViewById(R.id.voicePoPueng);
+        voicePoPueng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.cho_ching);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.po_pueng);
+                voiceHightPitched.start();
 
             }
         });
-        voice_to_tan = (TextView) view.findViewById(R.id.voice_to_tan);
-        voice_to_tan.setOnClickListener(new View.OnClickListener() {
+        voiceFoFha = (TextView) view.findViewById(R.id.voiceFoFha);
+        voiceFoFha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.to_tan);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.fo_fha);
+                voiceHightPitched.start();
 
             }
         });
-        voice_to_tung = (TextView) view.findViewById(R.id.voice_to_tung);
-        voice_to_tung.setOnClickListener(new View.OnClickListener() {
+        voiceSoSara = (TextView) view.findViewById(R.id.voiceSoSara);
+        voiceSoSara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.to_tung);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched = Util.playMediaSound(getActivity(), R.raw.so_sara);
+                voiceHightPitched.start();
 
             }
         });
-        voice_po_pueng = (TextView) view.findViewById(R.id.voice_po_pueng);
-        voice_po_pueng.setOnClickListener(new View.OnClickListener() {
+        voiceSoRuesee = (TextView) view.findViewById(R.id.voiceSoRuesee);
+        voiceSoRuesee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.po_pueng);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched =  Util.playMediaSound(getActivity(), R.raw.so_ruesee);
+                voiceHightPitched.start();
 
             }
         });
-        voice_fo_fha = (TextView) view.findViewById(R.id.voice_fo_fha);
-        voice_fo_fha.setOnClickListener(new View.OnClickListener() {
+        voiceSoSue = (TextView) view.findViewById(R.id.voiceSoSue);
+        voiceSoSue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.fo_fha);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched =  Util.playMediaSound(getActivity(), R.raw.so_seu);
+                voiceHightPitched.start();
 
             }
         });
-        voice_so_sara = (TextView) view.findViewById(R.id.voice_so_sara);
-        voice_so_sara.setOnClickListener(new View.OnClickListener() {
+        voiceHoHeeb = (TextView) view.findViewById(R.id.voiceHoHeeb);
+        voiceHoHeeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.so_sara);
-                voice_hight_pitched.start();
-
-            }
-        });
-        voice_so_ruesee = (TextView) view.findViewById(R.id.voice_so_ruesee);
-        voice_so_ruesee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.so_ruesee);
-                voice_hight_pitched.start();
-
-            }
-        });
-        voice_so_sue = (TextView) view.findViewById(R.id.voice_so_sue);
-        voice_so_sue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.so_seu);
-                voice_hight_pitched.start();
-
-            }
-        });
-        voice_ho_heeb = (TextView) view.findViewById(R.id.voice_ho_heeb);
-        voice_ho_heeb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                voice_hight_pitched = MediaPlayer.create(getActivity(), R.raw.ho_heeb);
-                voice_hight_pitched.start();
+                view.startAnimation(animation);
+               voiceHightPitched =  Util.playMediaSound(getActivity(), R.raw.ho_heeb);
+                voiceHightPitched.start();
 
             }
         });
@@ -174,19 +184,33 @@ public class HightPitchedFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-       
+
     }
 
-    
+    public void onPause() {
+        super.onPause();
+        voiceHightPitched.pause();
+        voiceHightPitched.release();
+
+    }
+    // ทำงานเมื่อแอปถูปิดลง
+    public void onDestroy() {
+        super.onDestroy();
+        voiceHightPitched.stop();
+        voiceHightPitched.release();
+        voiceHightPitched = null;
+    }
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
+
     private void FragmentMidrange() {
         Fragment fragment = new MidrangeFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -194,6 +218,7 @@ public class HightPitchedFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
     private void FragmentThreeLetter() {
         Fragment fragment = new ThreeLettersFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
