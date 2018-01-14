@@ -2,9 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.project.finalyear.thaispellinggame.fragment.HightPitchedFragment">
 
     <LinearLayout
+        android:background="@drawable/bg_hight"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -35,36 +37,40 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
 
-                <TextView
                     android:id="@+id/voiceKhoKhai"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_1"
-                    android:gravity="center"
-                    android:text="ข.ไข่"
-                    android:textSize="20sp" />
+                    android:src="@drawable/kho_khai"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceKhoKhod"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_2"
-                    android:gravity="center"
-                    android:text="ฃ.ขวด"
-                    android:textSize="20sp" />
+                    android:src="@drawable/kho_khod"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voiceChoChing"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_3"
-                    android:gravity="center"
-                    android:text="ฉ.ฉิ่ง"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceChoChing"
+                    android:src="@drawable/cho_ching"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
 
             </LinearLayout>
 
@@ -83,26 +89,28 @@
                     android:gravity="center"
                     android:text="ฐ.ฐาน"
                     android:textSize="20sp" />
-
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceToTung"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_6"
-                    android:gravity="center"
-                    android:text="ถ.ถุง"
-                    android:textSize="20sp" />
+                    android:src="@drawable/to_tunk"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voicePoPueng"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_7"
-                    android:gravity="center"
-                    android:text="ผ.ผึ้ง"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voicePoPueng"
+                    android:src="@drawable/po_pueng"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
 
             </LinearLayout>
 
@@ -111,26 +119,28 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceFoFha"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_5"
-                    android:gravity="center"
-                    android:text="ฝ.ฝา"
-                    android:textSize="20sp" />
+                    android:src="@drawable/fo_fha"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voiceSoSara"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_6"
-                    android:gravity="center"
-                    android:text="ศ.ศาลา"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceSoSara"
+                    android:src="@drawable/so_sara"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
 
                 <TextView
                     android:id="@+id/voiceSoRuesee"
@@ -148,26 +158,28 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceSoSue"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_5"
-                    android:gravity="center"
-                    android:text="ส.เสือ"
-                    android:textSize="20sp" />
+                    android:src="@drawable/so_seu"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voiceHoHeeb"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_6"
-                    android:gravity="center"
-                    android:text="ห.หีบ"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceHoHeeb"
+                    android:src="@drawable/ho_heeb"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
 
             </LinearLayout>
 

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,21 +18,20 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.adapter.ViewPagerAdapter;
 import com.project.finalyear.thaispellinggame.fragment.ContactAppFragment;
 import com.project.finalyear.thaispellinggame.fragment.ContactUsFragment;
-import com.project.finalyear.thaispellinggame.fragment.GameOneFragment;
+import com.project.finalyear.thaispellinggame.fragment.EditProfileFragment;
 import com.project.finalyear.thaispellinggame.fragment.LearningMainFragment;
-import com.project.finalyear.thaispellinggame.fragment.SummaryRoundOneFragment;
 import com.project.finalyear.thaispellinggame.fragment.TestFragment;
+import com.project.finalyear.thaispellinggame.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private Button btnContactUs, btnContactApp;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("ThaiSpellingGame");
+        toolbar.setTitle("ThaiSpellingGame");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         setFragment(new ViewPagerAdapter());//init
 
-
     }
 
     @Override
@@ -65,23 +62,24 @@ public class MainActivity extends AppCompatActivity
         // Check if user is signed in and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (currentUser == null) {
+        if (currentUser == null){
 
-//            sendToStart();
+            sendToStart();
         }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
-//    private void sendToStart() {
-//
-//        Intent startIntent = new Intent(MainActivity.this, SignUpActivity.class);
-//        startActivity(startIntent);
-//        finish();
-//    }
+    private void sendToStart() {
+
+        Intent startIntent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(startIntent);
+        finish();
+    }
 
     @Override
     public void onBackPressed() {
@@ -101,14 +99,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_home){
 
             setFragment(new ViewPagerAdapter());
 
-        } else if (id == R.id.nav_learn) {
+        }else if (id == R.id.nav_learn) {
 
             setFragment(new LearningMainFragment());
-
 
         } else if (id == R.id.nav_exam) {
 
@@ -116,16 +113,18 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
 
+            setFragment(new EditProfileFragment());
+
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_contact) {
+
             dialogContact();
 
-
-        } else if (id == R.id.nav_sign_out) {
+        }else if (id == R.id.nav_sign_out){
 
             FirebaseAuth.getInstance().signOut();
-//            sendToStart();
+            sendToStart();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -159,30 +158,11 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
     }
 
-    public void setFragment(Fragment fragment) {
-        if (fragment != null) {
+    public void setFragment(Fragment fragment){
+        if(fragment!=null){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_main, fragment);
+            ft.replace(R.id.content_main,fragment);
             ft.commit();
         }
     }
-
-
-//    public void FragmentSummaryRoundOne() {
-//        Fragment fragment = new SummaryRoundOneFragment();
-//        FragmentManager manager = getSupportFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.contentContainerRoundOne, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
-//    public void FragmentGameOne() {
-//        Fragment fragment = new GameOneFragment();
-//        FragmentManager manager = getSupportFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.content_main, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
-
 }

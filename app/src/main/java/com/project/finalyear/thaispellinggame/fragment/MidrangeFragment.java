@@ -20,15 +20,15 @@ import com.project.finalyear.thaispellinggame.common.Util;
 public class MidrangeFragment extends Fragment {
     ImageView imgNext;
     ImageView imgBack;
-    TextView voiceAoArng;
-    TextView voiceKoKai;
-    TextView voiceJoJan;
+    ImageView voiceAoArng;
+    ImageView voiceKoKai;
+    ImageView voiceJoJan;
     TextView voiceDoChada;
-    TextView voiceToPatuk;
-    TextView voiceDoDek;
-    TextView voiceToTao;
-    TextView voiceBoBaimai;
-    TextView voicePoPla;
+    ImageView voiceToPatuk;
+    ImageView voiceDoDek;
+    ImageView voiceToTao;
+    ImageView voiceBoBaimai;
+    ImageView voicePoPla;
     MediaPlayer voiceMidPitched;
 
     public MidrangeFragment() {
@@ -59,9 +59,10 @@ public class MidrangeFragment extends Fragment {
     }
 
     private void initInstances(View view) {
-        final Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.scale);
+
         imgBack = (ImageView) view.findViewById(R.id.imgBack);
         imgNext = (ImageView) view.findViewById(R.id.imgNext);
+        final Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.scale);
         imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +76,7 @@ public class MidrangeFragment extends Fragment {
             }
         });
 
-        voiceJoJan = (TextView) view.findViewById(R.id.voiceJoJan);
+        voiceJoJan = (ImageView) view.findViewById(R.id.voiceJoJan);
         voiceJoJan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +85,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceKoKai = (TextView) view.findViewById(R.id.voiceKoKai);
+        voiceKoKai = (ImageView) view.findViewById(R.id.voiceKoKai);
         voiceKoKai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +103,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceDoDek = (TextView) view.findViewById(R.id.voiceDoDek);
+        voiceDoDek = (ImageView) view.findViewById(R.id.voiceDoDek);
         voiceDoDek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +112,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceToTao = (TextView) view.findViewById(R.id.voiceToTao);
+        voiceToTao = (ImageView) view.findViewById(R.id.voiceToTao);
         voiceToTao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +121,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceToPatuk = (TextView) view.findViewById(R.id.voiceToPatuk);
+        voiceToPatuk = (ImageView) view.findViewById(R.id.voiceToPatuk);
         voiceToPatuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +130,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceBoBaimai = (TextView) view.findViewById(R.id.voiceBoBaimai);
+        voiceBoBaimai = (ImageView) view.findViewById(R.id.voiceBoBaimai);
         voiceBoBaimai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,7 +139,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voicePoPla = (TextView) view.findViewById(R.id.voicePoPla);
+        voicePoPla = (ImageView) view.findViewById(R.id.voicePoPla);
         voicePoPla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,7 +148,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceAoArng = (TextView) view.findViewById(R.id.voiceAoArng);
+        voiceAoArng = (ImageView) view.findViewById(R.id.voiceAoArng);
         voiceAoArng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

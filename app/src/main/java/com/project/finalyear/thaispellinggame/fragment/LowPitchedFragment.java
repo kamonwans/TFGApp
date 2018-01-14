@@ -21,18 +21,18 @@ public class LowPitchedFragment extends Fragment {
 
     ImageView imgNext;
     ImageView imgBack;
-    TextView voiceKhoKhway;
-    TextView voiceKhoKon;
-    TextView voiceKhoRakung;
-    TextView voiceNgoNgu;
-    TextView voiceChoChang;
-    TextView voiceChoCho;
-    TextView voiceChoCher;
-    TextView voiceYoYing;
+    ImageView voiceKhoKhway;
+    ImageView voiceKhoKon;
+    ImageView voiceKhoRakung;
+    ImageView voiceNgoNgu;
+    ImageView voiceChoChang;
+    ImageView voiceChoCho;
+    ImageView voiceChoCher;
+    ImageView voiceYoYing;
     TextView voiceToMonto;
-    TextView voiceToPutao;
-    TextView voiceNoNaen;
-    TextView voiceToTahan;
+    ImageView voiceToPutao;
+    ImageView voiceNoNaen;
+    ImageView voiceToTahan;
     MediaPlayer voiceLowPitched;
 
     public LowPitchedFragment() {
@@ -62,9 +62,10 @@ public class LowPitchedFragment extends Fragment {
     }
 
     private void initInstances(View view) {
-        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
+
         imgNext = (ImageView) view.findViewById(R.id.imgNext);
         imgBack = (ImageView) view.findViewById(R.id.imgBack);
+        final Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.scale);
         imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +79,7 @@ public class LowPitchedFragment extends Fragment {
             }
         });
 
-        voiceKhoKhway = (TextView) view.findViewById(R.id.voiceKhoKhway);
+        voiceKhoKhway = (ImageView) view.findViewById(R.id.voiceKhoKhway);
         voiceKhoKhway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +88,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceKhoKon = (TextView) view.findViewById(R.id.voiceKhoKon);
+        voiceKhoKon = (ImageView) view.findViewById(R.id.voiceKhoKon);
         voiceKhoKon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +97,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceKhoRakung = (TextView) view.findViewById(R.id.voiceKhoRakung);
+        voiceKhoRakung = (ImageView) view.findViewById(R.id.voiceKhoRakung);
         voiceKhoRakung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +106,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceNgoNgu = (TextView) view.findViewById(R.id.voiceNgoNgu);
+        voiceNgoNgu = (ImageView) view.findViewById(R.id.voiceNgoNgu);
         voiceNgoNgu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +115,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceChoChang = (TextView) view.findViewById(R.id.voiceChoChang);
+        voiceChoChang = (ImageView) view.findViewById(R.id.voiceChoChang);
         voiceChoChang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,7 +124,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceChoCho = (TextView) view.findViewById(R.id.voiceChoCho);
+        voiceChoCho = (ImageView) view.findViewById(R.id.voiceChoCho);
         voiceChoCho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,7 +133,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceChoCher = (TextView) view.findViewById(R.id.voiceChoCher);
+        voiceChoCher = (ImageView) view.findViewById(R.id.voiceChoCher);
         voiceChoCher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +142,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceYoYing = (TextView) view.findViewById(R.id.voiceYoYing);
+        voiceYoYing = (ImageView) view.findViewById(R.id.voiceYoYing);
         voiceYoYing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,7 +160,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceToPutao = (TextView) view.findViewById(R.id.voiceToPutao);
+        voiceToPutao = (ImageView) view.findViewById(R.id.voiceToPutao);
         voiceToPutao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,7 +169,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceNoNaen = (TextView) view.findViewById(R.id.voiceNoNaen);
+        voiceNoNaen = (ImageView) view.findViewById(R.id.voiceNoNaen);
         voiceNoNaen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,7 +178,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceToTahan = (TextView) view.findViewById(R.id.voiceToTahan);
+        voiceToTahan = (ImageView) view.findViewById(R.id.voiceToTahan);
         voiceToTahan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

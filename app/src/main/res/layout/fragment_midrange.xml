@@ -2,9 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.project.finalyear.thaispellinggame.fragment.MidrangeFragment">
 
     <LinearLayout
+        android:background="@drawable/bg_hight"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -36,26 +38,28 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceKoKai"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_1"
-                    android:gravity="center"
-                    android:text="ก.ไก่"
-                    android:textSize="20sp" />
+                    android:src="@drawable/ko_kai"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voiceJoJan"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_2"
-                    android:gravity="center"
-                    android:text="จ.จาน"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceJoJan"
+                    android:src="@drawable/jo_jan"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
 
                 <TextView
                     android:id="@+id/voiceDoChada"
@@ -74,36 +78,40 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceToPatuk"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_5"
-                    android:gravity="center"
-                    android:text="ฏ.ปฏัก"
-                    android:textSize="20sp" />
+                    android:src="@drawable/to_patuk"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceDoDek"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_6"
-                    android:gravity="center"
-                    android:text="ด.เด็ก"
-                    android:textSize="20sp" />
+                    android:src="@drawable/do_dek"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voiceToTao"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_7"
-                    android:gravity="center"
-                    android:text="ต.เต่า"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceToTao"
+                    android:src="@drawable/to_tao"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
+
 
             </LinearLayout>
 
@@ -112,36 +120,39 @@
                 android:layout_height="100dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voiceBoBaimai"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_5"
-                    android:gravity="center"
-                    android:text="บ.ใบไม้"
-                    android:textSize="20sp" />
+                    android:src="@drawable/bo_baimai"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:padding="6dp"
                     android:id="@+id/voicePoPla"
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_6"
-                    android:gravity="center"
-                    android:text="ป.ปลา"
-                    android:textSize="20sp" />
+                    android:src="@drawable/po_pha"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
 
-                <TextView
-                    android:id="@+id/voiceAoArng"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_bnt_7"
-                    android:gravity="center"
-                    android:text="อ.อ่าง"
-                    android:textSize="20sp" />
+                    android:elevation="5dp"
+                    android:padding="6dp"
+                    android:id="@+id/voiceAoArng"
+                    android:src="@drawable/ao_arng"
+                    app:civ_border_color="#000000"
+                    app:civ_border_width="2dp" />
+
 
             </LinearLayout>
 

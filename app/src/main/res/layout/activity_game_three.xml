@@ -8,6 +8,8 @@
     tools:context=".fragment.LearningMainFragment">
 
     <LinearLayout
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -19,8 +21,9 @@
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
+                android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="6dp"
                 android:src="@drawable/user2"
@@ -34,19 +37,20 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="คะแนน" />
 
                 <TextView
                     android:id="@+id/tvScoreOne"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="00" />
 
             </LinearLayout>
         </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -123,13 +127,14 @@
             android:background="#64d4f9" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvGame3"
+        <Button
+            android:id="@+id/btnBallOne"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
@@ -137,58 +142,64 @@
             android:gravity="center"
             android:text="แอปพลิเชัน" />
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="150dp"
-            android:background="@drawable/bg_circle_game3_1"
-            android:gravity="center"
-            android:text="ผัดไท" />
+        <!--<Button-->
+            <!--android:id="@+id/btnBallTwo"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="@drawable/bg_circle_game3_1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="ผัดไท" />-->
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/bg_circle_game3_2"
-            android:gravity="center"
-            android:text="โทรศัพท์" />
+        <!--<Button-->
+            <!--android:id="@+id/btnBallThree"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginLeft="150dp"-->
+            <!--android:layout_marginTop="100dp"-->
+            <!--android:background="@drawable/bg_circle_game3_2"-->
+            <!--android:gravity="center"-->
+            <!--android:text="โทรศัพท์" />-->
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/bg_circle_game3_3"
-            android:gravity="center"
-            android:text="อนุญาต" />
+        <!--<Button-->
+            <!--android:id="@+id/btnBallFour"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginLeft="180dp"-->
+            <!--android:layout_marginTop="250dp"-->
+            <!--android:background="@drawable/bg_circle_game3_3"-->
+            <!--android:gravity="center"-->
+            <!--android:text="อนุญาต" />-->
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/bg_circle_game3_3"
-            android:gravity="center"
-            android:text="ขอโทด" />
+        <!--<Button-->
+            <!--android:id="@+id/btnBallFive"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginLeft="260dp"-->
+            <!--android:layout_marginTop="340dp"-->
+            <!--android:background="@drawable/bg_circle_game3_3"-->
+            <!--android:gravity="center"-->
+            <!--android:text="ขอโทด" />-->
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_circle_game3_1"
-            android:gravity="center"
-            android:text="อนุมัติ" />
+        <!--<Button-->
+            <!--android:id="@+id/btnBallSix"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginLeft="250dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@drawable/bg_circle_game3_1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="อนุมัติ" />-->
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="300dp"
-            android:background="@drawable/bg_circle_game3"
-            android:gravity="center"
-            android:text="บรรได" />
+        <!--<Button-->
+            <!--android:id="@+id/btnBallSeven"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginLeft="70dp"-->
+            <!--android:layout_marginTop="300dp"-->
+            <!--android:background="@drawable/bg_circle_game3"-->
+            <!--android:gravity="center"-->
+            <!--android:text="บรรได" />-->
 
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

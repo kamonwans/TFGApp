@@ -1,6 +1,8 @@
 package com.project.finalyear.thaispellinggame.activity;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Message;
@@ -10,8 +12,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +32,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.common.FileHelper;
+import com.project.finalyear.thaispellinggame.common.Util;
 import com.project.finalyear.thaispellinggame.fragment.GameOneFragment;
 import com.project.finalyear.thaispellinggame.fragment.LearningMainFragment;
 import com.project.finalyear.thaispellinggame.fragment.SummaryRoundOneFragment;
+import com.project.finalyear.thaispellinggame.model.GameOne;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,13 +48,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class GameOneActivity extends AppCompatActivity {
 
     CountDownTimer countDownTimer;
-    private static TextView tvTimer, tvMeaning;
-    private static Button btnChoiceOne, btnChoiceTwo, btnChoiceThree;
+    private static TextView tvTimer, tvMeaning, tvScoreOne;
+    private static Button btnChoiceOne, btnChoiceTwo, btnChoiceThree, button;
     LinearLayout linearGameOne;
     private Firebase firebase;
     DatabaseReference databaseReference;
@@ -57,6 +66,12 @@ public class GameOneActivity extends AppCompatActivity {
     private ArrayList<GameOne> gameOneArrayList;
     private String selectedWords;
     public TextView answer;
+    int score;
+    int counter = 0;
+    String scoreText;
+    String correctAnswer;
+    MediaPlayer soundCorret, soundWrong, soundWow;
+    ImageView imgIconOne, imgIconTwo, imgBonus;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
 
 
@@ -74,10 +89,14 @@ public class GameOneActivity extends AppCompatActivity {
         btnChoiceTwo = (Button) findViewById(R.id.btnChoiceTwo);
         btnChoiceThree = (Button) findViewById(R.id.btnChoiceThree);
         tvMeaning = (TextView) findViewById(R.id.tvMeaning);
+//        btnChoiceFour = (Button) findViewById(R.id.btnChoiceFour);
+        tvScoreOne = (TextView) findViewById(R.id.tvScoreOne);
+        imgIconOne = (ImageView) findViewById(R.id.imgIconOne);
+        imgIconTwo = (ImageView) findViewById(R.id.imgIconTwo);
+        imgBonus = (ImageView) findViewById(R.id.imgBonus);
         firebase = new Firebase(URL_Firebase);
         dataPull();
         CountDownTimer();
-
 
 
     }
@@ -95,9 +114,12 @@ public class GameOneActivity extends AppCompatActivity {
             public void onFinish() {
                 tvTimer.setText("0");
 //                checkAnswer();
-                Intent intent = new Intent(GameOneActivity.this, SummaryRoundOneActivity.class);
+                Intent intent = new Intent(GameOneActivity.this, GameThreeActivity.class);
+
+// Intent intent = new Intent(GameOneActivity.this, SummaryRoundOneActivity.class);
 //                intent.putExtra("arrayList", arrayList );
                 startActivity(intent);
+                finish();
 
 
             }
@@ -109,44 +131,35 @@ public class GameOneActivity extends AppCompatActivity {
         firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-//                Map<String, String> map = dataSnapshot.getValue(Map.class);
-//                String meaning = map.get("meaning");
-//                String btnOne = map.get("choiceB");
-//                String btnTwo = map.get("choiceA");
-//                String btnThree = map.get("choiceC");
-//
-//                Log.v("E_Value", "Meaning : " + meaning);
-//                Log.v("E_Value", "choiceB : " + btnOne);
-//                Log.v("E_Value", "choiceA : " + btnTwo);
-//                Log.v("E_Value", "choiceC : " + btnThree);
-//                tvMeaning.setText(meaning);
-//                btnChoiceOne.setText(btnOne);
-//                btnChoiceTwo.setText(btnTwo);
-//                btnChoiceThree.setText(btnThree);
                 gameOneArrayList = new ArrayList<GameOne>();
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
 
+
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
                     gameOneArrayList.add(data.getValue(GameOne.class));
+
                 }
                 currentGameOneIndex = 0;
                 displayGameOne(currentGameOneIndex);
                 btnChoiceOne.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Click();
+                        Click(btnChoiceOne, counter);
+
                     }
                 });
                 btnChoiceTwo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Click();
+                        Click(btnChoiceTwo, counter);
+
                     }
                 });
                 btnChoiceThree.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Click();
+                        Click(btnChoiceThree, counter);
+
+
                     }
                 });
 
@@ -160,58 +173,103 @@ public class GameOneActivity extends AppCompatActivity {
 
     }
 
-    private void Click() {
-        advance();
-        answerIsRight();
-//        if (this.answerIsRight()) {
-//            Toast.makeText(getApplicationContext(), "Right", Toast.LENGTH_SHORT).show();
-//            advance();
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Wrong", Toast.LENGTH_SHORT).show();
-//            advance();
-//        }
-        selectedWords = btnChoiceOne.getText().toString();
-        selectedWords = btnChoiceTwo.getText().toString();
-        selectedWords = btnChoiceThree.getText().toString();
+    private void Click(Button btn, int count) {
+        answerIsRight(btn, count);
 
     }
 
-    private boolean answerIsRight() {
-        String answer = "correctAnswer";
-        if (btnChoiceOne == btnChoiceOne) answer = "correctAnswer";
-        if (btnChoiceTwo == btnChoiceTwo) answer = "correctAnswer";
-        if (btnChoiceThree == btnChoiceThree) answer = "correctAnswer";
-        return gameOneArrayList.get(currentGameOneIndex).isCorrectAnswer(answer);
+    private boolean answerIsRight(Button btn, int count) {
+        String answer = btn.getText().toString();
+        // check correctAnswer ตรงกับที่เลือกไหม
+        String selectedWordsFour = correctAnswer.toString();
+        final Animation animation = AnimationUtils.loadAnimation(this, R.anim.move);
+        if (answer.equals(selectedWordsFour)) {
+            imgIconOne.setVisibility(View.VISIBLE);
+            imgIconTwo.setVisibility(View.INVISIBLE);
+            imgIconOne.startAnimation(animation);
+            score += 50;
+            counter++;
+            scoreText = Integer.toString(score);
+            tvScoreOne.setText(scoreText);
+
+            soundCorret = Util.playMediaSound(this, R.raw.correct);
+            soundCorret.start();
+
+            // ถ้าตอบติดกัน 5 ข้อ ได้คะแนนโบนส 250 คะแนน
+            if (counter == 5) {
+                soundWow = Util.playMediaSound(this, R.raw.wow);
+                soundWow.start();
+                imgBonus.setVisibility(View.VISIBLE);
+                imgBonus.startAnimation(animation);
+                score = score + 250;
+                scoreText = Integer.toString(score);
+                tvScoreOne.setText(scoreText);
+
+                counter = 0; //set counter = 0 เพื่อนับ 1 ใหม่
+
+            } else {
+                imgBonus.setVisibility(View.INVISIBLE);
+
+            }
+        } else if (!answer.equals(selectedWordsFour)) {
+            imgIconTwo.setVisibility(View.VISIBLE);
+            imgIconOne.setVisibility(View.INVISIBLE);
+            imgIconTwo.startAnimation(animation);
+            counter = 0;
+            imgBonus.setVisibility(View.INVISIBLE);
+            soundWrong = Util.playMediaSound(this, R.raw.wrong);
+            soundWrong.start();
+            soundWrong.start();
+            Toast.makeText(GameOneActivity.this, "btn" + counter, Toast.LENGTH_SHORT).show();
+        }
+//        FileHelper.saveToFile(selectedWordsFour.toString());
+//        Toast.makeText(this, "Saved to file", Toast.LENGTH_SHORT).show();
+//        FileHelper.saveToFile(answer.toString());
+//        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+
+        advance();
+        return true;
     }
 
 
     private void displayGameOne(int index) {
-        tvMeaning.setText(gameOneArrayList.get(currentGameOneIndex).getMeaning());
-        btnChoiceOne.setText(gameOneArrayList.get(currentGameOneIndex).getChoiceA());
-        btnChoiceTwo.setText(gameOneArrayList.get(currentGameOneIndex).getChoiceB());
-        btnChoiceThree.setText(gameOneArrayList.get(currentGameOneIndex).getChoiceC());
+        Random random = new Random();
+        for (int i = 0; i < 5; i++) {
+            int section = random.nextInt(gameOneArrayList.size());
+            tvMeaning.setText(gameOneArrayList.get(section).getMeaning());
+            btnChoiceOne.setText(gameOneArrayList.get(section).getChoiceA());
+            btnChoiceTwo.setText(gameOneArrayList.get(section).getChoiceB());
+            btnChoiceThree.setText(gameOneArrayList.get(section).getChoiceC());
+            // ดึงคำตอบเก็บไ้ในตวแปร correctAnswer
+            correctAnswer = (gameOneArrayList.get(section).getCorrectAnswer());
+        }
+
     }
+
 
     private void advance() {
         currentGameOneIndex = (currentGameOneIndex + 1) % gameOneArrayList.size();
         displayGameOne(currentGameOneIndex);
     }
 
-//    public void sendData(String data) {
-//        btnChoiceOne.getText().toString();
-//        btnChoiceTwo.getText().toString();
-//        btnChoiceThree.getText().toString();
-//        Log.d("one","one");
-//        Log.d("two","two");
-//        Log.d("three","three");
-//    }
-//    public void checkAnswer() {
-//        HashMap<String, String> map;
-//        map = new HashMap<String, String>();
-//        map.put("primary key", "choice");
-//        arrayList.add(map);
-//        Log.d("map", "map");
-//
-//    }
+
+    // ทำงานเมื่อเปิด app เข้ามา
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    // ทำงานเมื่อแอปหยุดทำงานชั่วคราว
+    public void onPause() {
+        super.onPause();
+
+    }
+
+    // ทำงานเมื่อแอปถูปิดลง
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
 
 }

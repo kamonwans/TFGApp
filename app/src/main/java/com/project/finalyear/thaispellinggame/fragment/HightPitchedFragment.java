@@ -20,17 +20,17 @@ import com.project.finalyear.thaispellinggame.common.Util;
 public class HightPitchedFragment extends Fragment {
     ImageView imgNext;
     ImageView imgBack;
-    TextView voiceKhoKhai;
-    TextView voiceKhoKhod;
-    TextView voiceChoChing;
+    ImageView voiceKhoKhai;
+    ImageView voiceKhoKhod;
+    ImageView voiceChoChing;
     TextView voiceToTan;
-    TextView voiceToTung;
-    TextView voicePoPueng;
-    TextView voiceFoFha;
-    TextView voiceSoSara;
+    ImageView voiceToTung;
+    ImageView voicePoPueng;
+    ImageView voiceFoFha;
+    ImageView voiceSoSara;
     TextView voiceSoRuesee;
-    TextView voiceSoSue;
-    TextView voiceHoHeeb;
+    ImageView voiceSoSue;
+    ImageView voiceHoHeeb;
     MediaPlayer voiceHightPitched;
 
     public HightPitchedFragment() {
@@ -55,9 +55,10 @@ public class HightPitchedFragment extends Fragment {
 
 
     private void initInstances(View view) {
-        final Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale);
+
         imgBack = (ImageView) view.findViewById(R.id.imgBack);
         imgNext = (ImageView) view.findViewById(R.id.imgNext);
+        final Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.scale);
         imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +71,7 @@ public class HightPitchedFragment extends Fragment {
                 FragmentThreeLetter();
             }
         });
-        voiceKhoKhai = (TextView) view.findViewById(R.id.voiceKhoKhai);
+        voiceKhoKhai = (ImageView) view.findViewById(R.id.voiceKhoKhai);
         voiceKhoKhai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +81,7 @@ public class HightPitchedFragment extends Fragment {
             }
         });
 
-        voiceKhoKhod = (TextView) view.findViewById(R.id.voiceKhoKhod);
+        voiceKhoKhod = (ImageView) view.findViewById(R.id.voiceKhoKhod);
         voiceKhoKhod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +90,7 @@ public class HightPitchedFragment extends Fragment {
                 voiceHightPitched.start();
             }
         });
-        voiceChoChing = (TextView) view.findViewById(R.id.voiceChoChing);
+        voiceChoChing = (ImageView) view.findViewById(R.id.voiceChoChing);
         voiceChoChing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +109,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voiceToTung = (TextView) view.findViewById(R.id.voiceToTung);
+        voiceToTung = (ImageView) view.findViewById(R.id.voiceToTung);
         voiceToTung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +119,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voicePoPueng = (TextView) view.findViewById(R.id.voicePoPueng);
+        voicePoPueng = (ImageView) view.findViewById(R.id.voicePoPueng);
         voicePoPueng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +129,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voiceFoFha = (TextView) view.findViewById(R.id.voiceFoFha);
+        voiceFoFha = (ImageView) view.findViewById(R.id.voiceFoFha);
         voiceFoFha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,7 +139,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voiceSoSara = (TextView) view.findViewById(R.id.voiceSoSara);
+        voiceSoSara = (ImageView) view.findViewById(R.id.voiceSoSara);
         voiceSoSara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +159,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voiceSoSue = (TextView) view.findViewById(R.id.voiceSoSue);
+        voiceSoSue = (ImageView) view.findViewById(R.id.voiceSoSue);
         voiceSoSue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,7 +169,7 @@ public class HightPitchedFragment extends Fragment {
 
             }
         });
-        voiceHoHeeb = (TextView) view.findViewById(R.id.voiceHoHeeb);
+        voiceHoHeeb = (ImageView) view.findViewById(R.id.voiceHoHeeb);
         voiceHoHeeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,6 +200,7 @@ public class HightPitchedFragment extends Fragment {
         voiceHightPitched.release();
 
     }
+
     // ทำงานเมื่อแอปถูปิดลง
     public void onDestroy() {
         super.onDestroy();

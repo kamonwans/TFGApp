@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.project.finalyear.thaispellinggame.R;
-import com.project.finalyear.thaispellinggame.activity.GameOne;
+import com.project.finalyear.thaispellinggame.model.GameOne;
 
 import java.util.ArrayList;
 
@@ -26,14 +25,16 @@ public class GameOneFragment extends Fragment {
 
 
     CountDownTimer countDownTimer;
-    TextView tvTimer, tvMeaning;
-    Button btnChoiceOne, btnChoiceTwo, btnChoiceThree;
+    TextView tvTimer, tvMeaning,tvScoreOne;
+    Button btnChoiceOne, btnChoiceTwo, btnChoiceThree,btnChoiceFour;
     private Firebase firebase;
     private String wordMeaning, wordBtnOne, wordBtnTwo, wordBtnThree;
     private static final String URL_Firebase = "https://thaispellinggame-28cfe.firebaseio.com/Game_one";
     private int currentGameOneIndex;
+    private int score;
     private ArrayList<GameOne> gameOneArrayList;
     private String selectedWords;
+    String scoreText;
 
     public GameOneFragment() {
         // Required empty public constructor
@@ -69,6 +70,7 @@ public class GameOneFragment extends Fragment {
         btnChoiceTwo = (Button) view.findViewById(R.id.btnChoiceTwo);
         btnChoiceThree = (Button) view.findViewById(R.id.btnChoiceThree);
         tvMeaning = (TextView) view.findViewById(R.id.tvMeaning);
+        tvScoreOne = (TextView) view.findViewById(R.id.tvScoreOne);
         firebase = new Firebase(URL_Firebase);
         dataPull();
         CountDownTimer();
@@ -103,7 +105,9 @@ public class GameOneFragment extends Fragment {
                 btnChoiceOne.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         Click();
+
                     }
                 });
                 btnChoiceTwo.setOnClickListener(new View.OnClickListener() {
@@ -131,17 +135,32 @@ public class GameOneFragment extends Fragment {
     private void Click() {
         advance();
         answerIsRight();
-        selectedWords = btnChoiceOne.getText().toString();
-        selectedWords = btnChoiceTwo.getText().toString();
-        selectedWords = btnChoiceThree.getText().toString();
+        String  selectedWordsOne = btnChoiceOne.getText().toString();
+        String  selectedWordsTwo = btnChoiceTwo.getText().toString();
+        String  selectedWordsThree = btnChoiceThree.getText().toString();
+        String  selectedWordsFour = btnChoiceFour.getText().toString();
+        if (selectedWordsOne == selectedWordsFour) {
+            score +=10;
+            scoreText = Integer.toString(score);
+            tvScoreOne.setText(scoreText);
+        } else if (selectedWordsTwo == selectedWordsFour) {
+            score +=10;
+            scoreText = Integer.toString(score);
+            tvScoreOne.setText(scoreText);
+        } else if (selectedWordsThree == selectedWordsFour) {
+            score +=10;
+            scoreText = Integer.toString(score);
+            tvScoreOne.setText(scoreText);
+        }
+
 
     }
 
     private boolean answerIsRight() {
-        String answer = "";
-        if (btnChoiceOne == btnChoiceOne) answer = "a";
-        if (btnChoiceTwo == btnChoiceTwo) answer = "b";
-        if (btnChoiceThree == btnChoiceThree) answer = "b";
+        String answer = "correctAnswer";
+        if (btnChoiceOne == btnChoiceOne) answer = "correctAnswer";
+        if (btnChoiceTwo == btnChoiceTwo) answer = "correctAnswer";
+        if (btnChoiceThree == btnChoiceThree) answer = "correctAnswer";
         return gameOneArrayList.get(currentGameOneIndex).isCorrectAnswer(answer);
     }
 
@@ -150,6 +169,7 @@ public class GameOneFragment extends Fragment {
         btnChoiceOne.setText(gameOneArrayList.get(currentGameOneIndex).getChoiceA());
         btnChoiceTwo.setText(gameOneArrayList.get(currentGameOneIndex).getChoiceB());
         btnChoiceThree.setText(gameOneArrayList.get(currentGameOneIndex).getChoiceC());
+        btnChoiceFour.setText(gameOneArrayList.get(currentGameOneIndex).getCorrectAnswer());
     }
 
     private void advance() {
