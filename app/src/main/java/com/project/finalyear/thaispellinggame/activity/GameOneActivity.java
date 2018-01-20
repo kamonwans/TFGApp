@@ -1,14 +1,9 @@
 package com.project.finalyear.thaispellinggame.activity;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,36 +14,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
-import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.project.finalyear.thaispellinggame.R;
-import com.project.finalyear.thaispellinggame.common.FileHelper;
 import com.project.finalyear.thaispellinggame.common.Util;
-import com.project.finalyear.thaispellinggame.fragment.GameOneFragment;
-import com.project.finalyear.thaispellinggame.fragment.LearningMainFragment;
-import com.project.finalyear.thaispellinggame.fragment.SummaryRoundOneFragment;
 import com.project.finalyear.thaispellinggame.model.GameOne;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOError;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 
 public class GameOneActivity extends AppCompatActivity {
@@ -65,10 +43,10 @@ public class GameOneActivity extends AppCompatActivity {
     private int currentGameOneIndex;
     private ArrayList<GameOne> gameOneArrayList;
     ArrayList<String> selectAnswer = new ArrayList<String>();
-    ArrayList<String> answerRight  = new ArrayList<String>();
+    ArrayList<String> answerRight = new ArrayList<String>();
     private String selectedWords;
     public TextView answer;
-   // Intent intent;
+    // Intent intent;
     int score;
     int counter = 0;
     String scoreText;
@@ -115,16 +93,7 @@ public class GameOneActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 tvTimer.setText("0");
-//                checkAnswer();
-//                intent = new Intent(GameOneActivity.this, SumRondOneActivity.class);
-
-//                for(int i =0; i< answerRight.size();i++){
-//                    Log.d("answer ",answerRight.get(i));
-//                }
-              savedWord(selectAnswer,answerRight);
-
-
-
+                savedWord(selectAnswer, answerRight);
                 finish();
             }
         }.start();
@@ -182,7 +151,6 @@ public class GameOneActivity extends AppCompatActivity {
     }
 
     private boolean answerIsRight(Button btn, int count) {
-        //CountDownTimer();
         String answer = btn.getText().toString();
         // check correctAnswer ตรงกับที่เลือกไหม
         String selectedWordsFour = correctAnswer.toString();
@@ -230,8 +198,8 @@ public class GameOneActivity extends AppCompatActivity {
         selectAnswer.add(answer);
         answerRight.add(selectedWordsFour);
 
-        for(int i =0; i< answerRight.size();i++){
-            Log.d("answer ",answerRight.get(i) + i);
+        for (int i = 0; i < answerRight.size(); i++) {
+            Log.d("answer ", answerRight.get(i) + i);
         }
 
 //        Toast.makeText(this, "selectAnswer"+ selectAnswer+"\nanswerRight"+answerRight,Toast.LENGTH_SHORT).show();
@@ -243,7 +211,7 @@ public class GameOneActivity extends AppCompatActivity {
 
     private void savedWord(ArrayList<String> selectAnswer, ArrayList<String> answerRight) {
 
-        Intent intent = new Intent(GameOneActivity.this, SumRondOneActivity.class);
+        Intent intent = new Intent(GameOneActivity.this, SumRoundOneActivity.class);
         intent.putExtra("arrayListAnswerSelect", selectAnswer);
         intent.putExtra("arrayListAnswerRight", answerRight);
         startActivity(intent);

@@ -32,12 +32,11 @@
         <activity android:name=".activity.GameFourActivity" />
         <activity android:name=".activity.GameFiveActivity" />
         <activity android:name=".activity.GameActivity" />
-        <activity android:name=".activity.SummaryRoundOneActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".activity.SumRondOneActivity"></activity>
+        <activity android:name=".activity.SumRoundOneActivity"></activity>
     </application>
 
 </manifest>

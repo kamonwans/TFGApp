@@ -1,6 +1,7 @@
 package com.project.finalyear.thaispellinggame.adapter;
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +25,12 @@ import static com.project.finalyear.thaispellinggame.model.Constants.SECOND_COLU
 public class SmRoundOneAdapter extends BaseAdapter {
     public ArrayList<HashMap<String, String>> list;
     Activity activity;
+    ArrayList<String> arrayListRight;
+    ArrayList<String> arrayListSelect;
     TextView answerRight;
     TextView answerSelect;
 
-    public SmRoundOneAdapter(Activity activity, ArrayList<HashMap<String, String>> list) {
+    public SmRoundOneAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
         super();
         this.activity = activity;
         this.list = list;
@@ -54,6 +57,7 @@ public class SmRoundOneAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.item_sum_game_one, null);
             answerRight = (TextView) view.findViewById(R.id.tvAnswerRight);
             answerSelect = (TextView) view.findViewById(R.id.tvAnswerSelect);
+
         }
         HashMap<String, String> map = list.get(position);
         answerSelect.setText(map.get(FIRST_COLUMN));
