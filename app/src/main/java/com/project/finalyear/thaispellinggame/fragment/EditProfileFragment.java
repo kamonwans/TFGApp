@@ -94,6 +94,9 @@ public class EditProfileFragment extends Fragment {
                 String email = dataSnapshot.child("email").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
 
+                // get data show to edit text
+                editUsername.setText(name);
+                editEmail.setText(email);
 
 
                 if (image.equals("default_profile_pic")) {
@@ -128,16 +131,28 @@ public class EditProfileFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String name = editUsername.getText().toString();
                 String email = editEmail.getText().toString();
+
+
                 // set data to firebase
-                getUserDatabaseRef.child("name").setValue(name);
-                getUserDatabaseRef.child("email").setValue(email);
+                if (name.isEmpty()) {
+                    getUserDatabaseRef.child("name").setValue(name);
+                } else if (email.isEmpty()) {
+                    getUserDatabaseRef.child("email").setValue(email);
+                } else if (name.isEmpty() && email.isEmpty()) {
+                    getUserDatabaseRef.child("name").setValue(name);
+                    getUserDatabaseRef.child("email").setValue(email);
+                }else {
+                    getUserDatabaseRef.child("name").setValue(name);
+                    getUserDatabaseRef.child("email").setValue(email);
+                }
+
                 // show dialog success edit profile
                 dialogProfile();
                 // clear edit text
-                editUsername.setText("");
-                editEmail.setText("");
+
             }
         });
     }
