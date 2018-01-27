@@ -3,6 +3,7 @@ package com.project.finalyear.thaispellinggame.model;
 /**
  * Created by Namwan on 11/20/2017.
  */
+
 import android.view.View;
 
 import com.project.finalyear.thaispellinggame.R;
@@ -16,16 +17,26 @@ public class UserModel {
 
     public String name;
     public String image;
+    public String email;
     public boolean status;
 
     public UserModel() {
 
     }
 
-    public UserModel(String name, String image ,boolean status) {
+    public UserModel(String name, String image, String email, boolean status) {
         this.name = name;
         this.image = name;
+        this.email = email;
         this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

@@ -12,16 +12,21 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.project.finalyear.thaispellinggame.R;
 
+import java.util.HashMap;
 
-
+/**
+ * Created by Namwan on 11/16/2017.
+ */
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -34,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
-
 
 
     @Override
@@ -79,8 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-
-
     private void RegisterAccount(final String name, final String email, String password) {
 
         progressBar.setVisibility(View.VISIBLE);
@@ -103,8 +105,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                             mDatabaseRef.child("name").setValue(name);
                             mDatabaseRef.child("email").setValue(email);
-                            mDatabaseRef.child("status").setValue(true);
+                            mDatabaseRef.child("online").setValue(true);
                             mDatabaseRef.child("image").setValue("default_profile_pic");
+                            mDatabaseRef.child("thumb_image").setValue("default");
                             mDatabaseRef.child("rank").setValue("0");
                             mDatabaseRef.child("level").setValue("0");
                             mDatabaseRef.child("score").setValue("0");

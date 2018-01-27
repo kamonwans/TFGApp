@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.finalyear.thaispellinggame.R;
@@ -22,15 +24,16 @@ import static com.project.finalyear.thaispellinggame.model.Constants.SECOND_COLU
  * Created by kamonwan on 1/16/2018.
  */
 
-public class SmRoundOneAdapter extends BaseAdapter {
+public class SumRoundOneAdapter extends BaseAdapter {
     public ArrayList<HashMap<String, String>> list;
     Activity activity;
-    ArrayList<String> arrayListRight;
-    ArrayList<String> arrayListSelect;
     TextView answerRight;
     TextView answerSelect;
+    ImageView imgCorrect;
+    ImageView imgIncorrect;
 
-    public SmRoundOneAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
+
+    public SumRoundOneAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
         super();
         this.activity = activity;
         this.list = list;
@@ -55,8 +58,12 @@ public class SmRoundOneAdapter extends BaseAdapter {
         LayoutInflater inflater = activity.getLayoutInflater();
         if (view == null) {
             view = inflater.inflate(R.layout.item_sum_game_one, null);
+
             answerRight = (TextView) view.findViewById(R.id.tvAnswerRight);
             answerSelect = (TextView) view.findViewById(R.id.tvAnswerSelect);
+//            imgCorrect = (ImageView) view.findViewById(R.id.imgCorrect);
+//            imgIncorrect = (ImageView) view.findViewById(R.id.imgIncorrect);
+
 
         }
         HashMap<String, String> map = list.get(position);

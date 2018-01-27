@@ -70,7 +70,6 @@ public class GameOneActivity extends AppCompatActivity {
         btnChoiceTwo = (Button) findViewById(R.id.btnChoiceTwo);
         btnChoiceThree = (Button) findViewById(R.id.btnChoiceThree);
         tvMeaning = (TextView) findViewById(R.id.tvMeaning);
-//        btnChoiceFour = (Button) findViewById(R.id.btnChoiceFour);
         tvScoreOne = (TextView) findViewById(R.id.tvScoreOne);
         imgIconOne = (ImageView) findViewById(R.id.imgIconOne);
         imgIconTwo = (ImageView) findViewById(R.id.imgIconTwo);
@@ -93,7 +92,7 @@ public class GameOneActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 tvTimer.setText("0");
-                savedWord(selectAnswer, answerRight);
+                savedWord(selectAnswer, answerRight,scoreText);
                 finish();
             }
         }.start();
@@ -178,7 +177,6 @@ public class GameOneActivity extends AppCompatActivity {
                 scoreText = Integer.toString(score);
                 tvScoreOne.setText(scoreText);
                 counter = 0; //set counter = 0 เพื่อนับ 1 ใหม่
-
             } else {
                 imgBonus.setVisibility(View.INVISIBLE);
 
@@ -191,7 +189,7 @@ public class GameOneActivity extends AppCompatActivity {
             imgBonus.setVisibility(View.INVISIBLE);
             soundWrong = Util.playMediaSound(this, R.raw.wrong);
             soundWrong.start();
-            soundWrong.start();
+
 
         }
 
@@ -209,12 +207,14 @@ public class GameOneActivity extends AppCompatActivity {
         return true;
     }
 
-    private void savedWord(ArrayList<String> selectAnswer, ArrayList<String> answerRight) {
-
+    private void savedWord(ArrayList<String> selectAnswer, ArrayList<String> answerRight,String scoreText) {
         Intent intent = new Intent(GameOneActivity.this, SumRoundOneActivity.class);
         intent.putExtra("arrayListAnswerSelect", selectAnswer);
         intent.putExtra("arrayListAnswerRight", answerRight);
+        intent.putExtra("scoreRoundOne", scoreText);
         startActivity(intent);
+        Log.d("score ", scoreText);
+
     }
 
 
@@ -226,7 +226,7 @@ public class GameOneActivity extends AppCompatActivity {
             btnChoiceOne.setText(gameOneArrayList.get(section).getChoiceA());
             btnChoiceTwo.setText(gameOneArrayList.get(section).getChoiceB());
             btnChoiceThree.setText(gameOneArrayList.get(section).getChoiceC());
-            // ดึงคำตอบเก็บไ้ในตวแปร correctAnswer
+            // ดึงคำตอบเก็บไว้ในตัวแปร correctAnswer
             correctAnswer = (gameOneArrayList.get(section).getCorrectAnswer());
 //            gameOneArrayList.remove(section);
         }
@@ -236,6 +236,7 @@ public class GameOneActivity extends AppCompatActivity {
 
     private void advance() {
         currentGameOneIndex = (currentGameOneIndex + 1) % gameOneArrayList.size();
+        Log.d("currentGameOneIndex", String.valueOf(currentGameOneIndex));
         displayGameOne(currentGameOneIndex);
     }
 

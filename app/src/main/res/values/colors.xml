@@ -8,4 +8,6 @@
     <color name="colorPrimaryButton">#4BACC6</color>
     <color name="colorTextButton">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorAnswerRight">#43A047</color>
+    <color name="colorAnswerSelect">#E53935</color>
 </resources>

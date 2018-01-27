@@ -1,27 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <TextView
-        android:background="@drawable/bg_bnt_2"
-        android:id="@+id/tvAnswerSelect"
-        android:text="Select"
-        android:gravity="center"
-        android:textSize="26sp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="50dp" />
-    <TextView
-        android:id="@+id/tvAnswerRight"
-        android:text="Right"
-        android:background="@drawable/bg_bnt_6"
-        android:textSize="26sp"
-        android:gravity="center"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="50dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/tvAnswerSelect"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_answer_select"
+                android:gravity="center"
+                android:text="Select"
+                android:textColor="#ffffff"
+                android:textSize="26sp" />
+
+            <!--<ImageView-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/imgCorrect"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:src="@drawable/correct" />-->
+            <!--<ImageView-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/imgIncorrect"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:src="@drawable/incorrect" />-->
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvAnswerRight"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_answer_right"
+            android:gravity="center"
+            android:text="Right"
+            android:textColor="#ffffff"
+            android:textSize="26sp" />
+
+    </LinearLayout>
 </LinearLayout>
