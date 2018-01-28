@@ -148,11 +148,10 @@ public class EditProfileFragment extends Fragment {
                     getUserDatabaseRef.child("name").setValue(name);
                     getUserDatabaseRef.child("email").setValue(email);
                 }
-
                 // show dialog success edit profile
                 dialogProfile();
-                // clear edit text
-
+                editUsername.setText("");
+                editEmail.setText("");
             }
         });
     }

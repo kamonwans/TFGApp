@@ -51,7 +51,7 @@ public class GameOneActivity extends AppCompatActivity {
     int counter = 0;
     String scoreText;
     String correctAnswer;
-    MediaPlayer soundCorret, soundWrong, soundWow;
+    MediaPlayer soundCorret, soundWrong, soundWow,soundGameOne;
     ImageView imgIconOne, imgIconTwo, imgBonus;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
 
@@ -61,6 +61,7 @@ public class GameOneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_one);
         Firebase.setAndroidContext(this);
+        PlaySound();
         initInstance();
     }
 
@@ -93,6 +94,7 @@ public class GameOneActivity extends AppCompatActivity {
             public void onFinish() {
                 tvTimer.setText("0");
                 savedWord(selectAnswer, answerRight,scoreText);
+                soundGameOne.stop();
                 finish();
             }
         }.start();
@@ -240,22 +242,31 @@ public class GameOneActivity extends AppCompatActivity {
         displayGameOne(currentGameOneIndex);
     }
 
+    public void PlaySound() {
+       soundGameOne = MediaPlayer.create(GameOneActivity.this, R.raw.sound_game_1);
+        soundGameOne.start();
+
+    }
 
     // ทำงานเมื่อเปิด app เข้ามา
     public void onResume() {
         super.onResume();
+        soundGameOne.start();
 
     }
 
     // ทำงานเมื่อแอปหยุดทำงานชั่วคราว
     public void onPause() {
         super.onPause();
+        soundGameOne.pause();
+        soundGameOne.release();
 
     }
 
     // ทำงานเมื่อแอปถูปิดลง
     public void onDestroy() {
         super.onDestroy();
+
 
     }
 
