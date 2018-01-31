@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.project.finalyear.thaispellinggame.R;
@@ -18,6 +20,8 @@ public class LearningSectionMaegewFragment extends Fragment {
     ImageView imgBack;
     ImageView imgNext;
     MediaPlayer mediaPlayer;
+    ImageView imgPlay;
+    ImageView imgStop;
 
 
     public LearningSectionMaegewFragment() {
@@ -52,6 +56,25 @@ public class LearningSectionMaegewFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentLearningMainSection();
+            }
+        });
+        imgPlay = (ImageView) view.findViewById(R.id.imgPlay);
+        imgStop = (ImageView) view.findViewById(R.id.imgStop);
+
+        imgPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.start();
+                imgStop.setVisibility(View.VISIBLE);
+                imgPlay.setVisibility(View.INVISIBLE);
+            }
+        });
+        imgStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.pause();
+                imgPlay.setVisibility(View.VISIBLE);
+                imgStop.setVisibility(View.INVISIBLE);
             }
         });
 

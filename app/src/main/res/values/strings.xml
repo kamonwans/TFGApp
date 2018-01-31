@@ -74,8 +74,9 @@
     <string name="content_maekery_5">"เสวย  "</string>
     <string name="name_menu_learn">"สื่อการเรียนรู้"</string>
 
-    <string name="facebook_app_id">168019953927765</string>
-    <string name="fb_login_protocol_scheme">fb168019953927765</string>
+    <string name="facebook_app_id">2088731947820077</string>
+    <string name="fb_login_protocol_scheme">fb2088731947820077</string>
+
 
 
 </resources>

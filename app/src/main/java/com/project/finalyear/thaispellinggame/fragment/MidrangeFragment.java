@@ -23,7 +23,7 @@ public class MidrangeFragment extends Fragment {
     ImageView voiceAoArng;
     ImageView voiceKoKai;
     ImageView voiceJoJan;
-    TextView voiceDoChada;
+    ImageView voiceDoChada;
     ImageView voiceToPatuk;
     ImageView voiceDoDek;
     ImageView voiceToTao;
@@ -94,7 +94,7 @@ public class MidrangeFragment extends Fragment {
                 voiceMidPitched.start();
             }
         });
-        voiceDoChada = (TextView) view.findViewById(R.id.voiceDoChada);
+        voiceDoChada = (ImageView) view.findViewById(R.id.voiceDoChada);
         voiceDoChada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

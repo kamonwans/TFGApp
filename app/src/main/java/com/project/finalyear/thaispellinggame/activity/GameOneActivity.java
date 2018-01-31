@@ -1,5 +1,6 @@
 package com.project.finalyear.thaispellinggame.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -51,8 +54,12 @@ public class GameOneActivity extends AppCompatActivity {
     int counter = 0;
     String scoreText;
     String correctAnswer;
-    MediaPlayer soundCorret, soundWrong, soundWow,soundGameOne;
-    ImageView imgIconOne, imgIconTwo, imgBonus;
+    MediaPlayer soundCorret, soundWrong, soundWow, soundGameOne;
+    ImageView imgIconOne, imgIconTwo, imgBonus, imgSetting, imgCancelSetting;
+    Switch soundGame;
+    Switch soundEffect;
+    ImageView imgMusic, imgNotMusic, imgEffect, imgNotEffect;
+
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
 
 
@@ -75,12 +82,58 @@ public class GameOneActivity extends AppCompatActivity {
         imgIconOne = (ImageView) findViewById(R.id.imgIconOne);
         imgIconTwo = (ImageView) findViewById(R.id.imgIconTwo);
         imgBonus = (ImageView) findViewById(R.id.imgBonus);
+
+        soundGame = (Switch) findViewById(R.id.soundGame);
+        soundEffect = (Switch) findViewById(R.id.soundEffect);
         firebase = new Firebase(URL_Firebase);
+
+        imgMusic = (ImageView) findViewById(R.id.imgMusic);
+        imgNotMusic = (ImageView) findViewById(R.id.imgNotMusic);
+        imgEffect = (ImageView) findViewById(R.id.imgEffect);
+        imgNotEffect = (ImageView) findViewById(R.id.imgNotEffect);
+
+        imgMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                soundGameOne.stop();
+                imgNotMusic.setVisibility(View.VISIBLE);
+                imgMusic.setVisibility(View.INVISIBLE);
+            }
+        });
+        imgNotMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PlaySound();
+                imgMusic.setVisibility(View.VISIBLE);
+                imgNotMusic.setVisibility(View.INVISIBLE);
+            }
+        });
+        imgEffect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgNotEffect.setVisibility(View.VISIBLE);
+                soundCorret.stop();
+                soundWow.stop();
+                soundWrong.stop();
+                imgEffect.setVisibility(View.INVISIBLE);
+            }
+        }); 
+        imgNotEffect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgEffect.setVisibility(View.VISIBLE);
+                soundWrong.start();
+                soundWow.start();
+                soundCorret.start();
+                imgNotEffect.setVisibility(View.INVISIBLE);
+
+            }
+        });
         dataPull();
         CountDownTimer();
 
-
     }
+//
 
     private void CountDownTimer() {
         countDownTimer = new CountDownTimer(20000, 1000) {
@@ -93,7 +146,7 @@ public class GameOneActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 tvTimer.setText("0");
-                savedWord(selectAnswer, answerRight,scoreText);
+                savedWord(selectAnswer, answerRight, scoreText);
                 soundGameOne.stop();
                 finish();
             }
@@ -165,7 +218,6 @@ public class GameOneActivity extends AppCompatActivity {
             counter++;
             scoreText = Integer.toString(score);
             tvScoreOne.setText(scoreText);
-
             soundCorret = Util.playMediaSound(this, R.raw.correct);
             soundCorret.start();
 
@@ -209,7 +261,7 @@ public class GameOneActivity extends AppCompatActivity {
         return true;
     }
 
-    private void savedWord(ArrayList<String> selectAnswer, ArrayList<String> answerRight,String scoreText) {
+    private void savedWord(ArrayList<String> selectAnswer, ArrayList<String> answerRight, String scoreText) {
         Intent intent = new Intent(GameOneActivity.this, SumRoundOneActivity.class);
         intent.putExtra("arrayListAnswerSelect", selectAnswer);
         intent.putExtra("arrayListAnswerRight", answerRight);
@@ -243,10 +295,11 @@ public class GameOneActivity extends AppCompatActivity {
     }
 
     public void PlaySound() {
-       soundGameOne = MediaPlayer.create(GameOneActivity.this, R.raw.sound_game_1);
+        soundGameOne = MediaPlayer.create(GameOneActivity.this, R.raw.sound_game_1);
         soundGameOne.start();
 
     }
+
 
     // ทำงานเมื่อเปิด app เข้ามา
     public void onResume() {
@@ -267,6 +320,10 @@ public class GameOneActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
 
+
+    }
+    public void onBackPressed() {
+        super.onBackPressed();
 
     }
 

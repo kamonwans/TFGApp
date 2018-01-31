@@ -29,7 +29,7 @@ public class LowPitchedFragment extends Fragment {
     ImageView voiceChoCho;
     ImageView voiceChoCher;
     ImageView voiceYoYing;
-    TextView voiceToMonto;
+    ImageView voiceToMonto;
     ImageView voiceToPutao;
     ImageView voiceNoNaen;
     ImageView voiceToTahan;
@@ -151,7 +151,7 @@ public class LowPitchedFragment extends Fragment {
                 voiceLowPitched.start();
             }
         });
-        voiceToMonto = (TextView) view.findViewById(R.id.voiceToMonto);
+        voiceToMonto = (ImageView) view.findViewById(R.id.voiceToMonto);
         voiceToMonto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

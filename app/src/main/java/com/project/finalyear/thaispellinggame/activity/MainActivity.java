@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Button btnContactUs, btnContactApp;
+    private ImageView imgCancelSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity
             setFragment(new EditProfileFragment());
 
         } else if (id == R.id.nav_setting) {
+            dialogSetting();
 
         } else if (id == R.id.nav_contact) {
 
@@ -157,7 +160,20 @@ public class MainActivity extends AppCompatActivity
         });
         dialog.show();
     }
+    private void dialogSetting() {
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_popup_setting);
+        imgCancelSetting = (ImageView) dialog.findViewById(R.id.imgCancelSetting);
+        imgCancelSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        dialog.show();
 
+    }
     public void setFragment(Fragment fragment){
         if(fragment!=null){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

@@ -133,4 +133,5 @@ public class RankFragment extends Fragment {
         }
         return index;
     }
+
 }
