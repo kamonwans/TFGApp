@@ -112,12 +112,10 @@ public class GameOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 imgNotEffect.setVisibility(View.VISIBLE);
-                soundCorret.stop();
-                soundWow.stop();
-                soundWrong.stop();
+
                 imgEffect.setVisibility(View.INVISIBLE);
             }
-        }); 
+        });
         imgNotEffect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,8 +131,7 @@ public class GameOneActivity extends AppCompatActivity {
         CountDownTimer();
 
     }
-//
-
+    //--- function countdown ---//
     private void CountDownTimer() {
         countDownTimer = new CountDownTimer(20000, 1000) {
             @Override
@@ -166,6 +163,8 @@ public class GameOneActivity extends AppCompatActivity {
                 }
                 currentGameOneIndex = 0;
                 displayGameOne(currentGameOneIndex);
+
+                // ส่ง button กับจำนวนครั้งที่กด (counter) ไป
                 btnChoiceOne.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -185,7 +184,6 @@ public class GameOneActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Click(btnChoiceThree, counter);
 
-
                     }
                 });
 
@@ -199,12 +197,15 @@ public class GameOneActivity extends AppCompatActivity {
 
     }
 
+    //------ ส่งจำนวน count ไปเพื่อ check ว่าตอบติดกัน 5 ข้อหรือไม่ -----//
     private void Click(Button btn, int count) {
         answerIsRight(btn, count);
 
     }
 
-    private boolean answerIsRight(Button btn, int count) {
+    //---- check คำตอบ ----//
+    private void answerIsRight(Button btn, int count) {
+        // get ข้อความใน button เก็บไว้ในตัวแปร answer
         String answer = btn.getText().toString();
         // check correctAnswer ตรงกับที่เลือกไหม
         String selectedWordsFour = correctAnswer.toString();
@@ -221,7 +222,7 @@ public class GameOneActivity extends AppCompatActivity {
             soundCorret = Util.playMediaSound(this, R.raw.correct);
             soundCorret.start();
 
-            // ถ้าตอบติดกัน 5 ข้อ ได้คะแนนโบนส 250 คะแนน
+            // ถ้าตอบติดกัน 5 ข้อ ได้คะแนนโบนัส 250 คะแนน
             if (counter == 5) {
                 soundWow = Util.playMediaSound(this, R.raw.wow);
                 soundWow.start();
@@ -243,24 +244,20 @@ public class GameOneActivity extends AppCompatActivity {
             imgBonus.setVisibility(View.INVISIBLE);
             soundWrong = Util.playMediaSound(this, R.raw.wrong);
             soundWrong.start();
-
-
         }
 
-        selectAnswer.add(answer);
-        answerRight.add(selectedWordsFour);
+        selectAnswer.add(answer); // add คำตอบที่เลือกเก็บไว้ใน arrayList selectAnswer
+        answerRight.add(selectedWordsFour); // add คำตอบที่ถูกต้องเก็บไว้ใน arrayList answerRight
 
-        for (int i = 0; i < answerRight.size(); i++) {
-            Log.d("answer ", answerRight.get(i) + i);
-        }
-
-//        Toast.makeText(this, "selectAnswer"+ selectAnswer+"\nanswerRight"+answerRight,Toast.LENGTH_SHORT).show();
-
+//        for (int i = 0; i < answerRight.size(); i++) {
+//            Log.d("answer ", answerRight.get(i) + i);
+//        }
 
         advance();
-        return true;
+
     }
 
+    //---- ส่งค่าของคำตอบที่เลือกและคำตอบที่ถูกต้องไปหน้าสรุป ----//
     private void savedWord(ArrayList<String> selectAnswer, ArrayList<String> answerRight, String scoreText) {
         Intent intent = new Intent(GameOneActivity.this, SumRoundOneActivity.class);
         intent.putExtra("arrayListAnswerSelect", selectAnswer);
@@ -272,6 +269,7 @@ public class GameOneActivity extends AppCompatActivity {
     }
 
 
+    //---- แสดงข้อความ ----//
     private void displayGameOne(int index) {
         Random random = new Random();
         for (int i = 0; i < 5; i++) {
@@ -287,7 +285,7 @@ public class GameOneActivity extends AppCompatActivity {
 
     }
 
-
+    //---- เมื่อกดแล้วจะเปลี่ยนข้อ ----//
     private void advance() {
         currentGameOneIndex = (currentGameOneIndex + 1) % gameOneArrayList.size();
         Log.d("currentGameOneIndex", String.valueOf(currentGameOneIndex));
@@ -322,9 +320,18 @@ public class GameOneActivity extends AppCompatActivity {
 
 
     }
+
     public void onBackPressed() {
         super.onBackPressed();
 
+    }
+
+    public void onStop() {
+        super.onStop();
+        if (soundGameOne.isPlaying()) {
+            soundGameOne.stop();
+            soundGameOne.release();
+        }
     }
 
 

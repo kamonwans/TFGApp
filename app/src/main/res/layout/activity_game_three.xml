@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/mainScreen"
     tools:context=".fragment.LearningMainFragment">
 
     <LinearLayout
-        android:background="@color/colorPrimary"
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <LinearLayout
-
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -49,13 +49,35 @@
                     android:gravity="center"
                     android:text="00" />
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgIconOne"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/correct"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/imgIconTwo"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/incorrect"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+
             </LinearLayout>
         </LinearLayout>
 
-
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="80dp"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -87,21 +109,30 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="คะแนน" />
 
                 <TextView
                     android:id="@+id/tvScoreTwo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="00" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_bnt_1"
+                    android:src="@drawable/correct"
+                    android:visibility="invisible" />
             </LinearLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
+                android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="6dp"
                 android:src="@drawable/user3"
@@ -114,6 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
 
         <View
             android:layout_width="match_parent"
@@ -128,79 +160,135 @@
             android:background="#64d4f9" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:id="@+id/layoutArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnBallOne"
+        <RelativeLayout
+            android:id="@+id/ballTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-110dp">
+
+            <TextView
+                android:textSize="18dp"
+                android:id="@+id/tvTwo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_circle_game3"
+                android:gravity="center"
+                android:text="" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/progressBarLoad"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_marginTop="-120dp"
+            android:id="@+id/ballThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/tvThree"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_circle_game3"
+                android:gravity="center"
+                android:text=""
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ballOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-100dp"          >
+
+            <TextView
+                android:textSize="18dp"
+                android:id="@+id/tvOne"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_circle_game3"
+                android:gravity="center"
+                android:text="" />
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_circle_game3"
-            android:gravity="center"
-            android:text="แอปพลิเชัน" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/imgBonus"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/bg_bonus" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center">
 
-        <!--<Button-->
-            <!--android:id="@+id/btnBallTwo"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginTop="20dp"-->
-            <!--android:background="@drawable/bg_circle_game3_1"-->
-            <!--android:gravity="center"-->
-            <!--android:text="ผัดไท" />-->
+                <ImageView
+                    android:id="@+id/imgMusic"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/music"
+                    android:visibility="visible" />
 
-        <!--<Button-->
-            <!--android:id="@+id/btnBallThree"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginLeft="150dp"-->
-            <!--android:layout_marginTop="100dp"-->
-            <!--android:background="@drawable/bg_circle_game3_2"-->
-            <!--android:gravity="center"-->
-            <!--android:text="โทรศัพท์" />-->
+                <ImageView
+                    android:id="@+id/imgNotMusic"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/not_music"
+                    android:visibility="invisible" />
+            </RelativeLayout>
 
-        <!--<Button-->
-            <!--android:id="@+id/btnBallFour"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginLeft="180dp"-->
-            <!--android:layout_marginTop="250dp"-->
-            <!--android:background="@drawable/bg_circle_game3_3"-->
-            <!--android:gravity="center"-->
-            <!--android:text="อนุญาต" />-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center">
 
-        <!--<Button-->
-            <!--android:id="@+id/btnBallFive"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginLeft="260dp"-->
-            <!--android:layout_marginTop="340dp"-->
-            <!--android:background="@drawable/bg_circle_game3_3"-->
-            <!--android:gravity="center"-->
-            <!--android:text="ขอโทด" />-->
+                <ImageView
+                    android:id="@+id/imgEffect"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/effect"
+                    android:visibility="visible" />
 
-        <!--<Button-->
-            <!--android:id="@+id/btnBallSix"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginLeft="250dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:background="@drawable/bg_circle_game3_1"-->
-            <!--android:gravity="center"-->
-            <!--android:text="อนุมัติ" />-->
+                <ImageView
+                    android:id="@+id/imgNotEffect"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/not_effect"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
-        <!--<Button-->
-            <!--android:id="@+id/btnBallSeven"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginLeft="70dp"-->
-            <!--android:layout_marginTop="300dp"-->
-            <!--android:background="@drawable/bg_circle_game3"-->
-            <!--android:gravity="center"-->
-            <!--android:text="บรรได" />-->
 
-    </LinearLayout>
 </LinearLayout>

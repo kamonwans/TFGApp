@@ -118,28 +118,28 @@
                 android:textColor="#18bc7e"
                 android:textSize="18sp" />
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/facebook_account_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"     />
+            <!--<com.facebook.login.widget.LoginButton-->
+                <!--android:id="@+id/facebook_account_button"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="16dp"     />-->
                 <!--facebook:com_facebook_confirm_logout="false"-->
                 <!--facebook:com_facebook_tooltip_mode="never_display"-->
 
 
-            <!--<Button-->
-                <!--android:id="@+id/facebook_account_button"-->
-                <!--style="@style/Base.TextAppearance.AppCompat.Body1"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@drawable/background_facebook"-->
-                <!--android:clickable="true"-->
-                <!--android:padding="16dp"-->
-                <!--android:text="Log in with Facebook"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:textColor="#ffffff"-->
-                <!--android:textSize="18sp" />-->
+            <Button
+                android:id="@+id/facebook_account_button"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_facebook"
+                android:clickable="true"
+                android:padding="16dp"
+                android:text="Log in with Facebook"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

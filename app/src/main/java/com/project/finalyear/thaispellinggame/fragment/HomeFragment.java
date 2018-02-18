@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.project.finalyear.thaispellinggame.R;
+import com.project.finalyear.thaispellinggame.activity.GameFiveActivity;
 import com.project.finalyear.thaispellinggame.activity.GameOneActivity;
+import com.project.finalyear.thaispellinggame.activity.GameThreeActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -52,7 +54,7 @@ public class HomeFragment extends Fragment{
         btnPlayGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), GameOneActivity.class);
+                Intent intent = new Intent(getActivity(), GameThreeActivity.class);
                 startActivity(intent);
 
 
