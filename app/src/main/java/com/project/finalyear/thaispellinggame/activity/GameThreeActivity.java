@@ -1,51 +1,31 @@
 package com.project.finalyear.thaispellinggame.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.project.finalyear.thaispellinggame.R;
 import com.project.finalyear.thaispellinggame.common.Util;
 import com.project.finalyear.thaispellinggame.controller.GameThreeController;
 import com.project.finalyear.thaispellinggame.model.GameThree;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static android.animation.ValueAnimator.INFINITE;
 import static android.view.ViewGroup.*;
 import static java.lang.Thread.sleep;
 
@@ -55,13 +35,10 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
     TextView tvTimer;
     RelativeLayout ballOne, ballTwo, ballThree;
     TextView tvOne, tvTwo, tvThree;
-    DatabaseReference databaseReference;
-    FirebaseDatabase firebaseDatabase;
     private ArrayList<GameThree> gameThreeArrayList;
-    private int currentGameThreeIndex;
-    String type;
-    String type1;
-    String type2;
+    String typeBallOne;
+    String typeBallTwo;
+    String typeBallThree;
     int score;
     int counter = 0;
     String scoreText;
@@ -70,17 +47,11 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
     TextView tvScoreOne;
     ImageView imgBonus, imgMusic, imgNotMusic, imgEffect, imgNotEffect;
     MediaPlayer soundCorrect, soundWrong, soundGameThree, soundWow;
-    RelativeLayout.LayoutParams params1;
-    RelativeLayout.LayoutParams params2;
-    RelativeLayout.LayoutParams params3;
-    RelativeLayout layoutArea;
-    ViewGroup mainScreen;
-    static int called = 0;
-    int screenHeight = 0;
-    private int currentCover = 0;
     int height;
     ProgressBar progressBarLoad;
     private GameThreeController gameThreeController;
+    ArrayList<String> playerAnswer = new ArrayList<String>();
+    ArrayList<String> answerRight = new ArrayList<String>();
 
 
     @Override
@@ -99,9 +70,11 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
         ballOne = (RelativeLayout) findViewById(R.id.ballOne);
         ballTwo = (RelativeLayout) findViewById(R.id.ballTwo);
         ballThree = (RelativeLayout) findViewById(R.id.ballThree);
+
         tvOne = (TextView) findViewById(R.id.tvOne);
         tvTwo = (TextView) findViewById(R.id.tvTwo);
         tvThree = (TextView) findViewById(R.id.tvThree);
+
         imgIconOne = (ImageView) findViewById(R.id.imgIconOne);
         imgIconTwo = (ImageView) findViewById(R.id.imgIconTwo);
         imgBonus = (ImageView) findViewById(R.id.imgBonus);
@@ -194,13 +167,15 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             @Override
             public void onClick(View view) {
                 String txtOne = tvOne.getText().toString();
-                String typeTxtOne = type.toString();
-                //----- ส่งค่า คำศัพท์ที่ลือก , type ของคำศัพท์ ----//
+                String typeTxtOne = typeBallOne.toString();
+                //----- ส่งค่า คำศัพท์ที่ลือก , typeBallOne ของคำศัพท์ ----//
                 checkAnswer(txtOne, typeTxtOne);
-                ballOne.setVisibility(View.INVISIBLE);
-                marginTopBallOne = -500;
-                ballOne.setVisibility(VISIBLE);
+                final Animation animation = AnimationUtils.loadAnimation(GameThreeActivity.this, R.anim.move);
+                ballOne.setAnimation(animation);
+                marginTopBallOne = -100;
+                // setText ข้อใหม่
                 setTextToBallOne(gameThreeArrayList);
+
             }
         });
 
@@ -208,13 +183,12 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             @Override
             public void onClick(View view) {
                 String txtTwo = tvTwo.getText().toString();
-                String typeTxtTwo = type1.toString();
+                String typeTxtTwo = typeBallTwo.toString();
                 checkAnswer(txtTwo, typeTxtTwo);
-                ballTwo.setVisibility(View.INVISIBLE);
-                marginTopBallTwo = -500;
-                ballTwo.setVisibility(VISIBLE);
+                final Animation animation = AnimationUtils.loadAnimation(GameThreeActivity.this, R.anim.move);
+                ballTwo.setAnimation(animation);
+                marginTopBallTwo = -150;
                 setTextToBallTwo(gameThreeArrayList);
-
             }
         });
 
@@ -223,15 +197,15 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             @Override
             public void onClick(View view) {
                 String txtThree = tvThree.getText().toString();
-                String typeTxtThree = type2.toString();
+                String typeTxtThree = typeBallThree.toString();
                 checkAnswer(txtThree, typeTxtThree);
-                ballThree.setVisibility(View.INVISIBLE);
-                marginTopBallThree = -500;
-                ballThree.setVisibility(VISIBLE);
+                final Animation animation = AnimationUtils.loadAnimation(GameThreeActivity.this, R.anim.move);
+                ballThree.setAnimation(animation);
+                marginTopBallThree = -50;
                 setTextToBallThree(gameThreeArrayList);
-
             }
         });
+
 
 
     }
@@ -247,6 +221,7 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             @Override
             public void onFinish() {
                 tvTimer.setText("0");
+                saveWord(playerAnswer, answerRight, scoreText);
                 soundGameThree.stop();
             }
         }.start();
@@ -259,9 +234,9 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
         gameThreeController.pullData();
     }
 
-    private int marginTopBallOne = 0;
-    private int marginTopBallTwo = 0;
-    private int marginTopBallThree = 0;
+    private int marginTopBallOne = -100;
+    private int marginTopBallTwo = -30;
+    private int marginTopBallThree = -10;
 
     private void fallingBallOne() {
         final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ballOne.getLayoutParams();
@@ -270,7 +245,7 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             @Override
             public void run() {
 
-                marginTopBallOne += 5;
+                marginTopBallOne += 15;
                 params.setMargins(10, marginTopBallOne, 0, 0);
                 ballOne.setLayoutParams(params);
                 handler.postDelayed(this, 35);//
@@ -285,18 +260,16 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
         handler.postDelayed(runnable, 100);
 
     }
-
     private void fallingBallTwo() {
         final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ballTwo.getLayoutParams();
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                marginTopBallTwo += 5;
-                params.setMargins(100, marginTopBallTwo, 0, 0);
+                marginTopBallTwo += 15;
+                params.setMargins(50, marginTopBallTwo, 0, 0);
                 ballTwo.setLayoutParams(params);
                 handler.postDelayed(this, 35);
-
                 // check marginTop > ขนาดหน้าจอ ให้ marginTop = -100
                 if (marginTopBallTwo > (height - 1000)) {
                     marginTopBallTwo = -100;
@@ -307,15 +280,14 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
         handler.postDelayed(runnable, 100);
 
     }
-
     private void fallingBallThree() {
         final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ballThree.getLayoutParams();
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                marginTopBallThree += 5;
-                params.setMargins(200, marginTopBallThree, 0, 0);
+                marginTopBallThree += 15;
+                params.setMargins(100, marginTopBallThree, 0, 0);
                 ballThree.setLayoutParams(params);
                 handler.postDelayed(this, 35);
                 // check marginTop มากกว่าขนาดหน้าจอ ให้ marginTop = -100
@@ -328,7 +300,8 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
 
     }
 
-    private void checkAnswer( String text, String typeClick) {
+
+    private void checkAnswer(String text, String typeClick) {
         String answer = text.toString();
 
         String typeAnswer = typeClick.toString();
@@ -362,6 +335,8 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             } else if (counter != 5) {
                 imgBonus.setVisibility(View.INVISIBLE);
             }
+            playerAnswer.add("ถูก");
+            answerRight.add(answer);
 
             // ถ้าตอบผิด
         } else if (!typeAnswer.equals("correct")) {
@@ -371,22 +346,20 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
             counter = 0;
             soundWrong = Util.playMediaSound(this, R.raw.wrong);
             soundWrong.start();
-              imgBonus.setVisibility(View.INVISIBLE);
-        }
-//         advance();
+            imgBonus.setVisibility(View.INVISIBLE);
 
+            playerAnswer.add("ผิด");
+            answerRight.add(answer);
+        }
     }
 
-   // ----- เปลี่ยนข้อ -----//
-//    private void advance() {
-//        gameThreeArrayList = gameThreeController.getGameThreeArrayList();
-//        setTextToBallOne(gameThreeArrayList);
-//        setTextToBallTwo(gameThreeArrayList);
-//        setTextToBallThree(gameThreeArrayList);
-//       // currentGameThreeIndex = (currentGameThreeIndex + 1) % gameThreeArrayList.size();
-//        Log.d("currentGameOneIndex", String.valueOf(currentGameThreeIndex));
-//       // displayGameThree(currentGameThreeIndex,gameThreeArrayList);
-//    }
+    private void saveWord(ArrayList<String> playerAnswer, ArrayList<String> answerRight, String scoreText) {
+        Intent intent = new Intent(GameThreeActivity.this, SumRoundThreeActivity.class);
+        intent.putExtra("playerAnswer", playerAnswer);
+        intent.putExtra("rightAnswer", answerRight);
+        intent.putExtra("scoreRoundThree", scoreText);
+        startActivity(intent);
+    }
 
     public void PlaySound() {
         soundGameThree = MediaPlayer.create(GameThreeActivity.this, R.raw.sound_game_3);
@@ -435,12 +408,12 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
     private void setTextToBallOne(ArrayList<GameThree> gameThreeArrayList) {
         Random random = new Random();
         //  random ball one
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             int section = random.nextInt(gameThreeArrayList.size());
             Log.d("section", String.valueOf(section));
             tvOne.setText(gameThreeArrayList.get(section).getWord());
-            type = gameThreeArrayList.get(section).getType();
-            Log.d("typeCorrect : ", type);
+            typeBallOne = gameThreeArrayList.get(section).getType();
+            Log.d("typeCorrect : ", typeBallOne);
         }
 
 
@@ -449,27 +422,27 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
     private void setTextToBallTwo(ArrayList<GameThree> gameThreeArrayList) {
         // random ball Two
         Random random = new Random();
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 1; j++) {
             int section1 = random.nextInt(gameThreeArrayList.size());
             Log.d("section1", String.valueOf(section1));
             tvTwo.setText(gameThreeArrayList.get(section1).getWord());
-            type1 = gameThreeArrayList.get(section1).getType();
-            Log.d("typeCorrect : ", type1);
+            typeBallTwo = gameThreeArrayList.get(section1).getType();
+            Log.d("typeCorrect1 : ", typeBallTwo);
         }
     }
 
     private void setTextToBallThree(ArrayList<GameThree> gameThreeArrayList) {
         Random random = new Random();
         //random ball three
-        for (int k = 0; k < 10; k++) {
+        for (int k = 0; k < 1; k++) {
             int section2 = random.nextInt(gameThreeArrayList.size());
             Log.d("section2", String.valueOf(section2));
             tvThree.setText(gameThreeArrayList.get(section2).getWord());
-            type2 = gameThreeArrayList.get(section2).getType();
-            Log.d("typeCorrect : ", type2);
+            typeBallThree = gameThreeArrayList.get(section2).getType();
+            Log.d("typeCorrect2 : ", typeBallThree);
         }
 
-        }
+    }
 
     @Override
     public void displayGameThree(int index, ArrayList<GameThree> gameThreeArrayList) {
@@ -479,9 +452,12 @@ public class GameThreeActivity extends AppCompatActivity implements GameThreeCon
         setTextToBallOne(gameThreeArrayList);
         setTextToBallTwo(gameThreeArrayList);
         setTextToBallThree(gameThreeArrayList);
+
+
         fallingBallOne();
         fallingBallTwo();
         fallingBallThree();
+
     }
 
     @Override

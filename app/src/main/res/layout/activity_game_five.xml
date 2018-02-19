@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg5"
     tools:context=".fragment.LearningMainFragment">
 
     <LinearLayout
@@ -129,6 +130,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:gravity="center"
             android:id="@+id/linearLeft"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -137,9 +139,10 @@
             android:orientation="vertical">
 
             <TextView
+                android:background="@drawable/gamefour"
                 android:id="@+id/tvLeftOne"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Text"
@@ -147,9 +150,10 @@
                 android:visibility="visible" />
 
             <TextView
+                android:background="@drawable/gamefour"
                 android:id="@+id/tvLeftTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Text"
@@ -157,28 +161,20 @@
                 android:visibility="visible" />
 
             <TextView
+                android:background="@drawable/gamefour"
                 android:id="@+id/tvLeftThree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Text"
-                android:textSize="22sp"
-                android:visibility="invisible" />
+                android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/tvLeftFour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="Text"
-                android:textSize="22sp"
-                android:visibility="invisible" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:gravity="center"
             android:id="@+id/linearRight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -187,44 +183,35 @@
             android:orientation="vertical">
 
             <TextView
+                android:background="@drawable/gamefour"
                 android:id="@+id/tvRightOne"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Text"
-                android:textSize="22sp"
-                android:visibility="visible" />
+                android:textSize="22sp" />
 
             <TextView
+                android:background="@drawable/gamefour"
                 android:id="@+id/tvRightTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Text"
-                android:textSize="22sp"
-                android:visibility="visible" />
+                android:textSize="22sp" />
 
             <TextView
+                android:background="@drawable/gamefour"
                 android:id="@+id/tvRightThree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Text"
-                android:textSize="22sp"
-                android:visibility="invisible" />
+                android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/tvRightFour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="Text"
-                android:textSize="22sp"
-                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 

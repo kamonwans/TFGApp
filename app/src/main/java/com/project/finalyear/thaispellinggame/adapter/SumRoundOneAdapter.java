@@ -63,8 +63,6 @@ public class SumRoundOneAdapter extends BaseAdapter {
             answerSelect = (TextView) view.findViewById(R.id.tvAnswerSelect);
 //            imgCorrect = (ImageView) view.findViewById(R.id.imgCorrect);
 //            imgIncorrect = (ImageView) view.findViewById(R.id.imgIncorrect);
-
-
         }
         HashMap<String, String> map = list.get(position);
         answerSelect.setText(map.get(FIRST_COLUMN));
